@@ -1,0 +1,141 @@
+<div *ngIf="data">
+  <div class="container emp-profile shadow-z-4">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <img [src]="data.Img_Path" alt="" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5 class="text-capitalize font-medium-3">
+            {{ data.Name }}
+          </h5>
+          <h6 class="mt-1">
+            Course : {{ data.Course_id.Course_Name }} <br> {{data.Standard_id ? data.Standard_id.Name : null}}
+          </h6>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <input
+          type="submit"
+          class="profile-edit-btn"
+          name="btnAddMore"
+          value="Edit Profile"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          
+          <div class="row">
+            <div class="col-md-6">
+              <label>Father Name</label>
+            </div>
+            <div class="col-md-6">
+              <p>{{ data.Fname }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Email</label>
+            </div>
+            <div class="col-md-6">
+              <p>{{ data.email }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Phone</label>
+            </div>
+            <div class="col-md-6">
+              <p>{{ data.PhNo }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Created On</label>
+            </div>
+            <div class="col-md-6">
+              <p>{{ data.Created_On.substr(0,10) }}</p>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                <label>Id</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ data._id }}</p>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Age</label>
+            </div>
+            <div class="col-md-6">
+              <p>{{ data.Age }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Date of Birth</label>
+            </div>
+            <div class="col-md-6">
+              <p>{{ data.DOB }}</p>
+            </div>
+          </div>
+         
+            <div class="row">
+              <div class="col-md-6">
+                <label>City</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ data.Address.city}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>State</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ data.Address.state}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Pincode</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ data.Address.pincode}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Address</label>
+              </div>
+              <div class="col-md-6">
+                <p class="font-small-3">{{ data.Address.address}}</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

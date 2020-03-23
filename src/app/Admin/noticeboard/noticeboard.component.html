@@ -1,0 +1,104 @@
+<ng-template #content let-modal class="fade shadow-z-2 ">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ ModalTitle }}</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+      <div class="modal-body taskboard-modal">
+        <div class="container">
+          <fieldset class="form-group position-relative has-icon-left">
+            <input
+              type="text"
+              formControlName="Title"
+              class="form-control"
+              id="todoTitle"
+              placeholder="Title"
+              required
+            />
+            <small
+              *ngIf="
+                !myForm.controls.Title.valid && myForm.controls.Title.touched
+              "
+              class="form-text text-muted danger ng-star-inserted text-center"
+              >Title Must Be valid</small
+            >
+
+            <div class="form-control-position control-position-right">
+              <i class="ft-image"></i>
+            </div>
+          </fieldset>
+          <fieldset class="form-group position-relative has-icon-left">
+            <input
+              type="text"
+              formControlName="Desc"
+              class="form-control"
+              id="todoMessage"
+              placeholder="Descriptions"
+              required
+            />
+            <small
+              *ngIf="
+                !myForm.controls.Desc.valid && myForm.controls.Desc.touched
+              "
+              class="form-text text-muted danger ng-star-inserted text-center"
+              >Descriptions Must Be valid</small
+            >
+            <div class="form-control-position control-position-right">
+              <i class="ft-image"></i>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-success float-right btn-block btn-raised shadow-z-1"
+            [disabled]="!myForm.valid"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<button
+  class="btn btn-primary float-right btn-block btn-raised shadow-z-2"
+  (click)="openmodel(content)"
+>
+  Add Notice
+</button>
+<br />
+<br />
+<div *ngFor="let item of tbldata">
+
+  <div class="card w-100  shadow-z-2">
+    <div class="card-header">
+      <h4 class="card-title text-center">
+        {{item.Title}}
+        <i class="ft-edit float-right m-2" (click)="handleupdate(item._id , item.Title , item.Desc , content)"></i>
+       <i class="ft-trash-2 float-right m-2" (click)="handledelete(item._id)"></i>
+      </h4>
+    </div>
+
+    <div class="card-content m-0" aria-expanded="true">
+      <div class="card-body">
+        <p class="card-text">{{item.Desc}}</p>
+      </div>
+    </div>
+    <div class="card-footer m-0">
+      <small class="text-muted pt-1 text-warning" >{{item.Date}}</small>
+      <div></div>
+    </div>
+  </div>
+
+</div>
+<br /><br />

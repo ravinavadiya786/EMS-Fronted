@@ -1,0 +1,23 @@
+<div display="inline" style="text-align: center; margin: 10px;"><i (click)="fetchstan()"
+    class="ft-refresh-ccw font-large-1 blue-grey darken-4 mr-1"></i></div>
+
+<div *ngFor="let item of tbldata">
+
+  <div class="card w-100  shadow-z-2">
+    <div class="card-header">
+      <h4 class="card-title text-center">
+        {{item.Title}}
+      </h4>
+    </div>
+
+    <div class="card-content m-0" aria-expanded="true">
+      <div class="card-body">
+        <p class="card-text">{{item.Desc}}</p>
+      </div>
+    </div>
+    <div class="card-footer m-0">
+      <small class="text-muted pt-1 text-warning">{{item.Date}}</small>
+      <div></div>
+    </div>
+  </div>
+</div>

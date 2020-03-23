@@ -1,0 +1,21 @@
+
+<section id="action">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header" style="overflow : hidden">
+          <h4 class="card-title" style="float:left;">Manage Standard</h4>          
+             <div display="inline" style="float:right;"><i (click)="fetchstan()" class="ft-refresh-ccw font-large-1 blue-grey darken-4 mr-1"></i></div>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <div class="table-responsive">
+              <ng2-smart-table [settings]="alertsettings" [source]="tbldata" (deleteConfirm)="onDeleteConfirm($event)"
+              (userRowSelect)="funct($event)"></ng2-smart-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

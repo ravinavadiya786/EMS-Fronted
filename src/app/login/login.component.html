@@ -1,0 +1,69 @@
+<!--Login Page Starts-->
+<section id="login">
+  <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+
+  <div class="container-fluid">
+    <div class="row full-height-vh m-0">
+      <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="card shadow-z-4">
+          <div class="card-content">
+            <div class="card-body login-img">
+              <div class="row m-0">
+                <div
+                  class="col-lg-6 d-lg-block d-none py-2 px-3 text-center align-middle"
+                >
+                  <img
+                    src="../../assets/img/login.png"
+                    alt=""
+                    class="img-fluid mt-5"
+                    width="400"
+                    height="230"
+                  />
+                </div>
+                <div class="col-lg-6 col-md-12 bg-white px-4 pt-3">
+                  <h4 class="card-title text-center mb-3 mb-2 shadow-2">
+                    Login In To EMs
+                  </h4>
+
+                  <input
+                    type="email"
+                    class="form-control mb-3"
+                    formControlName="email"
+                    placeholder="Email"
+                  />
+                  <input
+                    type="password"
+                    class="form-control mb-3"
+                    formControlName="Password"
+                    placeholder="Password"
+                  />
+                  <div class="d-flex justify-content-between mt-2">
+                    <div class="forgot-password-option">
+                      <a
+                        [routerLink]="['/pages/forgotpassword']"
+                        class="text-decoration-none text-primary"
+                        >Forgot Password ?</a
+                      >
+                    </div>
+                  </div>
+                  <div class="fg-actions d-flex justify-content-between">
+                    <div class="login-btn"></div>
+                    <div class="recover-pass ">
+                      <button type="submit" class="btn btn-primary text-white shadow-z-3">
+                        Login
+                      </button>
+                    </div>
+                  </div>
+                  <hr class="m-0" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+</section>
+<!--Login Page Ends-->

@@ -1,0 +1,68 @@
+<div class="row text-left">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Admin Registration</h4>
+      </div>
+      <div class="card-content">
+        <div class="card-body">
+          <form [formGroup]="adminform" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Admin Name</mat-label>
+                <input type="text"   id="aname" formControlName="aname" matInput placeholder="Admin Name">
+                <mat-error *ngIf="hasError('aname', 'required')">Name is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input  matInput formControlName="dob" [matDatepicker]="picker" (focus)="picker.open()"
+                  (click)="picker.open()">
+                  <mat-error *ngIf="hasError('dob', 'required')">Date is required</mat-error>
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Ph.No</mat-label>
+                <input type="number" id="phno" formControlName="phno" matInput placeholder="Mobile Number">
+                <mat-error *ngIf="hasError('phno', 'required')">Ph.No is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input type="email" id="email" formControlName="email" matInput placeholder="Email ID">
+                <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+                <mat-error *ngIf="hasError('email', 'email')">Enter a Valid Email Address</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">              
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input type="password" id="password" formControlName="password" matInput placeholder="Password">
+                <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+                <mat-error *ngIf="hasError('password', 'minlength')">Password must be at least 6 characters</mat-error>
+                <mat-error *ngIf="hasError('password', 'maxlength')">Enter a password between 6-8</mat-error>
+                
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-label class="id1">Gender</mat-label>
+              <mat-radio-group formControlName="Gender" aria-label="Select an option">
+                <mat-radio-button color="warn" checked value="Male">Male</mat-radio-button>
+                <mat-radio-button color="warn" value="Female">Female</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="form-group">
+              <button mat-raised-button color="warn" type="submit">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

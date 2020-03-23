@@ -1,0 +1,77 @@
+<div class="row text-left">
+  <div *ngIf="show" class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Add Subject</h4>
+      </div>
+      <div class="card-content">
+        <div class="card-body">
+          <form class="form" [formGroup]="subjectform" (ngSubmit)="postdata()">
+            <div class="form-body">
+              <h4 class="form-section"></h4>
+              <div class="row">
+                <div class="form-group col-md-6 mb-2">
+                  <label for="userinput1">Course_ID</label>
+                  <select formControlName="Course_ID" class="form-control">
+                    <option selected="selected" disabled="" value="">Select Course</option>
+                    <option *ngFor="let item of courses" value="{{item._id}}">{{item.Course_Name}}</option>
+                  </select>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6 mb-2">
+                  <label for="userinput2">Standard_ID</label>
+                  <select formControlName="Std_ID" class="form-control">
+                    <option selected="selected" disabled="" value="">Select Standard</option>
+                    <option *ngFor="let items of standards" value="{{items._id}}">{{items.Name}}</option>
+                  </select>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6 mb-2">
+                  <label for="subjectname">Subject</label>
+                  <input type="text" formControlName="Sub_Name" id="userinput3" class="form-control border-primary"
+                    placeholder="Subject Name" >
+                </div>
+              </div>
+            </div>
+            <div class="form-actions left">
+              <button type="reset" class="btn btn-raised btn-warning mr-1">
+                <i class="ft-x"></i> Cancel
+              </button>
+              <button type="submit" class="btn btn-raised btn-primary">
+                <i class="fa fa-check-square-o"></i> Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+       
+<!--Confirm Action Starts-->
+
+<section id="action">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header" style="overflow : hidden">
+          <h4 class="card-title" style="float:left;">Manage Subject</h4>          
+             <a display="inline" style="float:right;" (click)="show = !show" href="javascript:void(0)" class="btn btn-raised mr-1 shadow btn-primary">Add New Subject</a>
+        </div>
+
+        <div class="card-content">
+          <div class="card-body">
+            <div class="table-responsive">
+              <ng2-smart-table [settings]="alertsettings" [source]="tbldata" (deleteConfirm)="onDeleteConfirm($event)"
+                (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Confirm Action Ends-->

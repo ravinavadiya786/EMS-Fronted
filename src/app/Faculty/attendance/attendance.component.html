@@ -1,0 +1,29 @@
+<mat-progress-bar *ngIf="isshow" mode="indeterminate"></mat-progress-bar>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="custom-file mx-auto d-block shadow">
+      <input class="custom-file-input" id="inputGroupFile01" (change)="changefile($event)" type="file" /><label
+        class="custom-file-label" for="inputGroupFile01">Choose Photo</label>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <button class="btn btn-primary float-right shadow-z-3 btn-block btn-raised" (click)="startCamera()">
+      <i class="fa fa-camera pr-2"></i>
+      Attendance With Web Camera
+      <i class="fa fa-camera pl-2"></i>
+    </button>
+  </div>
+</div>
+
+
+<button [hidden]="!isopen" class="btn btn-primary float-right btn-block btn-raised" (click)="capture()">
+  Capture Image
+</button>
+<video #video [hidden]="!isopen" class="vid shadow-z-5" autoplay></video>
+
+<canvas #canvas id="canvas" [hidden]="!isopen" class="vid shadow-z-5"></canvas>
+
+<ul *ngFor="let item of data">
+  <li>{{ item }}</li>
+</ul>
