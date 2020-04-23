@@ -19,7 +19,7 @@ import { Subscription } from "rxjs";
   styleUrls: ["./customizer.component.scss"]
 })
 export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild("customizer", {static: false}) customizer: ElementRef;
+  @ViewChild("customizer") customizer: ElementRef;
 
   options = {
     direction: "ltr",

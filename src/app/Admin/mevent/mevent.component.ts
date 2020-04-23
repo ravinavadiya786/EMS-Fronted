@@ -35,7 +35,7 @@ const colors: any = {
 
 export class MeventComponent implements OnInit {
 
-    @ViewChild('modalContent', { static: false }) modalContent: TemplateRef<any>;
+    @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
     view: string = 'month';
 
