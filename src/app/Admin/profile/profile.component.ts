@@ -17,10 +17,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
 
     if (this.AuthService.getRole() === "Student") {
-      this.http.get("https://college-managment-system.herokuapp.com/Admin/Student").subscribe((data: any) => this.data = data[0])
+      // https://college-managment-system.herokuapp.com/Student/Student
+      this.http.get("http://localhost:8050/Student/Student").subscribe((data: any) => this.data = data)
     }
+    // 
     else if (this.AuthService.getRole() === "Faculty") {
-      this.http.get("https://college-managment-system.herokuapp.com/Admin/Faculty").subscribe((data: any) => this.data = data[0])
+      this.http.get("http://localhost:8050/Faculty/Faculty").subscribe((data: any) => this.data = data)
     } else if (this.location.getState()) {
       this.data = this.location.getState()
 
