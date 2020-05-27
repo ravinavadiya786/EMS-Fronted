@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DivisionComponent implements OnInit {
 
-  tbldata: any;
-  alertsettings;
+  tbldata: Array<any>;
+  alertsettings :any;
 
   constructor(private http: HttpClient) { }
 

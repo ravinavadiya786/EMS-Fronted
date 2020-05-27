@@ -43,6 +43,10 @@ export const STUDENT_ROUTES: Routes = [
     loadChildren: () => import('../../Comman/noticeboard/noticeboard.module').then(m => m.NoticeboardModule)
   },
   {
+    path: 'test',
+    loadChildren: () => import('../../Student/test/test.module').then(m => m.TestModule)
+  },
+  {
     path: '**',
     redirectTo: 'dashbord'
   }, 
@@ -65,6 +69,10 @@ export const FACULTY_ROUTES: Routes = [
   {
     path: 'course',
     loadChildren: () => import('../../Comman/course/course.module').then(m => m.CourseModule),
+  },
+  {
+    path: 'assignment',
+    loadChildren: () => import('../../Faculty/assignment/assignment.module').then(m => m.AssignmentModule),
   },
   {
     path: 'subject',
@@ -97,6 +105,10 @@ export const FACULTY_ROUTES: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('../../Admin/profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
+    path: 'test',
+    loadChildren: () => import('../../Faculty/test/test.module').then(m => m.TestModule)
   },
   {
     path: '**',

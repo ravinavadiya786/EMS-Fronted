@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AttendanceRoutingModule } from './attendance-routing.module';
- 
 import { AttendanceComponent } from './attendance.component';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'app/shared/auth/token-interceptor.service';
+
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material/material.module'
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   imports: [

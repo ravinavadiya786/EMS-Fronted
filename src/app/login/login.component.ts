@@ -13,6 +13,9 @@ import * as jwt_decode from 'jwt-decode';
 
 export class loginComponent implements OnInit {
 
+   ENDURL = "http://localhost:8050"
+  //  https://college-managment-system.herokuapp.com"
+
   constructor(public http: HttpClient, private toast: ToastrService, private Router: Router) { }
 
   loginform: FormGroup = new FormGroup({
@@ -22,7 +25,7 @@ export class loginComponent implements OnInit {
 
 
   onSubmit() {
-    this.http.post("https://college-managment-system.herokuapp.com/auth/login", this.loginform.value).subscribe((data: any) => {
+    this.http.post(`${this.ENDURL}/auth/login`, this.loginform.value).subscribe((data: any) => {
       if (data.Success) {
         console.log(this.loginform.value);
         localStorage.setItem('token', data.token)

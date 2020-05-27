@@ -26,17 +26,15 @@ export class MtimetableComponent implements OnInit {
 
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
-
   ngOnInit() {
-    this.fetchstan()
   }
 
   ngAfterViewInit() {
-
     this.http.get("https://college-managment-system.herokuapp.com/Admin/Course").subscribe((data: any) => this.courses = data)
     this.http.get("https://college-managment-system.herokuapp.com/Admin/Standard").subscribe((data: any) => this.standards = data)
     this.http.get("https://college-managment-system.herokuapp.com/Admin/Subject").subscribe((data: any) => this.subject = data)
     this.http.get("https://college-managment-system.herokuapp.com/Admin/Division").subscribe((data: any) => this.division = data)
+    this.fetchstan()
 
   }
 
@@ -61,11 +59,12 @@ export class MtimetableComponent implements OnInit {
           'Division_Name': value.Division_ID ? value.Division_ID.Division_Name : 'Deleted Record',
           'Subject_Name': value.Subject_ID ? value.Subject_ID.Sub_Name : 'Deleted Record',
           'From_Time': value.From_Time,
-          'To_Time' : value.To_Time,
+          'To_Time': value.To_Time,
           'Day': value.Day,
           'Is_Active': value.Is_Active,
         }
       })
+      console.log('timetable', this.tbldata)
 
       var that = this
 
@@ -115,12 +114,12 @@ export class MtimetableComponent implements OnInit {
               }
             }
           },
-          Division_Name : {
+          Division_Name: {
             title: 'Division',
             editor: {
               type: 'list',
               config: {
-                list:  this.division.map((data: any) => { return { title: data.Division_Name, value: data._id } })
+                list: this.division ? this.division.map((data: any) => { return { title: data.Division_Name, value: data._id } }) : []
               }
             }
           },
@@ -152,7 +151,7 @@ export class MtimetableComponent implements OnInit {
             }
           },
         },
-        
+
         attr: {
           class: "table table-responsive"
         },
@@ -178,8 +177,8 @@ export class MtimetableComponent implements OnInit {
   }
 
 
-   //  For confirm action On Delete
-   onDeleteConfirm(event) {
+  //  For confirm action On Delete
+  onDeleteConfirm(event) {
     var that = this
     swal.fire({
       title: 'Are you sure you want to delete?',

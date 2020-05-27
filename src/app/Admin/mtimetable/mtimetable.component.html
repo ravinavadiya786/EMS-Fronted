@@ -3,7 +3,6 @@
   Add Time Table
 </button>
 
-
 <div class="row text-left" id="collapseExample" [ngbCollapse]="isCollapsed">
   <div class="col-sm-12">
     <div class="card">
@@ -28,7 +27,6 @@
                       <label class="font-small-3 text-center pl-4 text-primary text-uppercase">To_Time</label>
                       <ngb-timepicker formControlName="To_Time"></ngb-timepicker>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -37,7 +35,7 @@
                 <div class="form-group col-md-6 mb-2 m-1">
                   <label class="text-primary text-uppercase" for="userinput1">Select Course</label>
                   <select formControlName="Course_ID" class="form-control">
-                    <option *ngFor="let item of courses" value="{{item._id}}">{{item.Course_Name}}</option>
+                    <option *ngFor="let item of courses" value="{{ item._id }}">{{ item.Course_Name }}</option>
                   </select>
                 </div>
               </div>
@@ -46,48 +44,44 @@
                 <div class="form-group col-md-6 mb-2 m-1">
                   <label class="text-primary text-uppercase" for="userinput2">Select Standard</label>
                   <select formControlName="Std_ID" class="form-control">
-                    <option *ngFor="let items of standards" value="{{items._id}}">{{items.Name}}</option>
+                    <option *ngFor="let items of standards" value="{{ items._id }}">{{ items.Name }}</option>
                   </select>
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group col-md-6 mb-2 m-1">
-                  <label class="text-primary text-uppercase" for="userinput2">Select Subject</label>
+                  <label class="text-primary text-uppercase" for="Subject_ID">Select Subject</label>
                   <select formControlName="Subject_ID" class="form-control">
-                    <option *ngFor="let items of subject" value="{{items._id}}">{{items.Sub_Name}}</option>
+                    <option *ngFor="let items of subject" value="{{ items._id }}">{{ items.Sub_Name }}</option>
                   </select>
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group col-md-6 mb-2 m-1">
-                  <label class="text-primary text-uppercase" for="userinput2">Select Division</label>
+                  <label class="text-primary text-uppercase" for="Division_ID">Select Division</label>
                   <select formControlName="Division_ID" class="form-control">
-                    <option *ngFor="let items of division" value="{{items._id}}">{{items.Division_Name}}</option>
+                    <option *ngFor="let items of division" value="{{ items._id }}">{{ items.Division_Name }}</option>
                   </select>
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group col-md-6 mb-2 m-1">
-
                   <mat-form-field class="pl-1">
                     <mat-label class="font-medium-1">Select Day</mat-label>
                     <mat-select formControlName="Day">
                       <mat-option class="font-medium-1" *ngFor="let item of week" [value]="item">
-                        {{item}}
+                        {{ item }}
                       </mat-option>
-
                     </mat-select>
                   </mat-form-field>
-
                 </div>
               </div>
-
             </div>
             <div class="form-actions left">
-              <button type="reset" class="btn btn-raised btn-warning mr-1">
+              <button type="reset" class="btn btn-raised btn-warning mr-1" (click)="isCollapsed = !isCollapsed">
                 <i class="ft-x"></i> Cancel
               </button>
               <button type="submit" class="btn btn-raised btn-primary">
@@ -100,6 +94,7 @@
     </div>
   </div>
 </div>
+
 <div class="table-responsive">
   <ng2-smart-table [settings]="alertsettings" [source]="tbldata" (deleteConfirm)="onDeleteConfirm($event)"
     (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>

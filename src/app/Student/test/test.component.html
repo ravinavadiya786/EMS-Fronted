@@ -1,0 +1,82 @@
+<div *ngIf="is_Start; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+
+    <div class="container">
+        <div class="shadow-z-1-hover card" style="letter-spacing: 0.05rem;">
+            <div class="card-header" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);">
+                <h3 class="text-center card-title">Test Questions {{CurrentQNo}} / {{AlllTestArr.length}}</h3>
+                <h5 class="text-right mr-2 card-subtitle" (click)="startCountdown(1)">timer : {{timer}}</h5>
+            </div>
+            <div class="card-content">
+
+                <h4 class="text-center mt-2 text-bold-400 font-large-1">
+                    {{AlllTestArr[CurrentQNo]?.Question_Name}}
+                </h4>
+
+                <div class="container">
+                    <div class="row mt-4 mb-4 justify-content-md-center text-center">
+
+                        <ng-container *ngFor="let item of AlllTestArr[CurrentQNo]?.Answer;let i = index">
+                            <div class="col m-2">
+                                <button
+                                    class="btn gradient-purple-light-blue btn-block shadow-z-1-hover text-white btn-raised btn-round font-medium-3"
+                                    (click)="NextQuestion(i+1,AlllTestArr[CurrentQNo]?.Correct_Ans)">
+                                    {{item}}
+                                </button>
+                            </div>
+                            <div class="w-100" *ngIf="i % 2 != 0"></div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #elseBlock>
+    <div class="row text-left" matchheight="card">
+        <div class="col" *ngFor="let item of Test_Names">
+            <div class="card" style="height: auto">
+                <div class="card-content">
+                    <div class="px-3 py-3">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h3 class="mb-1 danger">{{item?.Test_Name}}</h3>
+                                <h5 class="ml-3 mt-2 mt-2">{{item.Subject_ID?.Sub_Name}}</h5>
+                            </div>
+
+                            <div style="margin-right: 500px;">
+                                <button
+                                    class="btn gradient-pomegranate text-white font-medium-3 text-bold-400 text-center btn-raised shadow-z-2"
+                                    (click)="StartTest(item?._id)" style=" width: 200px; height: 55px;">
+                                    Start Test
+                                </button>
+                            </div>
+                            <div class="media-right align-self-center">
+                                <i class="icon-rocket danger font-large-2 float-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header" style="overflow : hidden">
+          <h4 class="card-title text-center">Test Results
+            <div display="inline" style="float:right;"><i (click)="fetchData()"
+                class="ft-refresh-ccw font-large-1 blue-grey darken-4 mr-1"></i></div>
+          </h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <div class="table-responsive">
+                <ng2-smart-table [settings]="Coulmn" [source]="Test_Results"></ng2-smart-table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</ng-template>

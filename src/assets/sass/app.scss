@@ -1,8 +1,6 @@
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 @import "scss/variables";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-@import "~prismjs/plugins/toolbar/prism-toolbar.css";
-@import "~prismjs/themes/prism-okaidia";
 @import "scss/app-variables";
 @import "scss/mixins";
 @import "scss/core/palette";
@@ -12,5 +10,4 @@
 @import "scss/fonts/weather-icons";
 @import "scss/plugins";
 @import '~ngx-ui-switch/ui-switch.component.scss';
-@import "~@ng-select/ng-select/themes/default.theme.css";
 @import "scss/demo"; // Remove this SCSS from production

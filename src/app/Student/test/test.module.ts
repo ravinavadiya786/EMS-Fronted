@@ -1,33 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MtimetableComponent } from './mtimetable.component';
-import { MtimetableRoutingModule } from './mtimetable-routing.module';
+import { TestRoutingModule } from './test-routing.module';
+import { TestComponent } from './test.component';
 
-import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material/material.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'app/shared/auth/token-interceptor.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 
 @NgModule({
-  declarations: [MtimetableComponent],
+  declarations: [TestComponent],
   imports: [
     CommonModule,
-    MtimetableRoutingModule,
-    Ng2SmartTableModule,
+    TestRoutingModule,
+    MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule,
+    Ng2SmartTableModule,
     NgbModule
   ],
-  providers : [
+  providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
     }
-  ]
+  ],
 })
-export class MtimetableModule { }
+export class TestModule { }
