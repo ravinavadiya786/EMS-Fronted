@@ -71,7 +71,7 @@ export class MeventComponent implements OnInit {
     constructor(private modal: NgbModal, private AuthService: AuthService, private http: HttpClient, private toast: ToastrService) { }
 
     fetchstan() {
-        this.events$ = this.http.get("https://college-managment-system.herokuapp.com/Admin/Event").pipe(map((data: any) => {
+        this.events$ = this.http.get("http://localhost:8050/Admin/Event").pipe(map((data: any) => {
             return data.map((element: any) => {
                 return {
                     start: startOfDay(element.start), end: endOfDay(element.end), title: element.title, color: element.color, _id: element._id, actions: this.AuthService.getRole() === ("Admin" || "Faculty") ? this.actions : null
@@ -85,7 +85,6 @@ export class MeventComponent implements OnInit {
     ngOnInit() {
         this.fetchstan()
         this.role = (this.AuthService.getRole() === "Faculty" || this.AuthService.getRole() === "Admin") ? true : false
-        console.log(this.role)
     }
 
     dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -121,7 +120,7 @@ export class MeventComponent implements OnInit {
         switch (this.modalData.action) {
             case 'Edit this event':
                 console.log('Edit', this.modalData.event)
-                this.http.put("https://college-managment-system.herokuapp.com/Admin/Event", { ... this.modalData.event }).subscribe((data: any) => {
+                this.http.put("http://localhost:8050/Admin/Event", { ... this.modalData.event }).subscribe((data: any) => {
                     if (data.Error) {
                         this.toast.error(data.Error);
                     } else {
@@ -132,7 +131,7 @@ export class MeventComponent implements OnInit {
                 break;
             case 'This event is deleted!':
                 console.log('Edit', this.modalData.event)
-                this.http.delete("https://college-managment-system.herokuapp.com/Admin/Event?_id=" + this.modalData.event._id).subscribe((data: any) => {
+                this.http.delete("http://localhost:8050/Admin/Event?_id=" + this.modalData.event._id).subscribe((data: any) => {
                     if (data.Error) {
                         this.toast.error(data.Error);
                     } else {
@@ -142,7 +141,7 @@ export class MeventComponent implements OnInit {
                 })
                 break;
             case 'Add new event':
-                this.http.post("https://college-managment-system.herokuapp.com/Admin/Event", this.modalData.event).subscribe((data: any) => {
+                this.http.post("http://localhost:8050/Admin/Event", this.modalData.event).subscribe((data: any) => {
                     if (data.Success) {
                         this.toast.success(data.Success)
                         this.ngOnInit()

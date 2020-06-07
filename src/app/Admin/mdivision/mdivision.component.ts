@@ -27,7 +27,7 @@ export class MdivisionComponent implements OnInit {
 
 
   fetchstan() {
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Division").subscribe((data: any) => {
+    this.http.get("http://localhost:8050/Admin/Division").subscribe((data: any) => {
 
       this.tbldata = data.map((value: any) => {
         return {

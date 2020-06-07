@@ -21,7 +21,7 @@ export class TestComponent implements OnInit {
   submitted = false;
   testData: any;
   public isCollapsed = true;
-  
+
 
   constructor(private http: HttpClient, private fb: FormBuilder, private toast: ToastrService) { }
 
@@ -48,7 +48,7 @@ export class TestComponent implements OnInit {
 
   fetchstan() {
     this.http.get("http://localhost:8050/Faculty/Test").subscribe((data: any) => {
-      this.isCollapsed= true
+      this.isCollapsed = true
       this.testData = data
       var that = this
 
@@ -124,10 +124,13 @@ export class TestComponent implements OnInit {
   get sellingPoints() {
     return this.productForm.get("ArrQuestions") as FormArray;
   }
-
+  
+  GetsubjectBuCourse(id) {
+    this.http.get(`http://localhost:8050/Admin/Subject/CourseWise/${id}`).subscribe((data: any) => this.subject = data)
+  }
   ngAfterViewInit() {
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Subject").subscribe((data: any) => this.subject = data)
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Course").subscribe((data: any) => {
+    // this.http.get("http://localhost:8050/Admin/Subject").subscribe((data: any) => this.subject = data)
+    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => {
       this.course = data
       this.fetchstan();
     })

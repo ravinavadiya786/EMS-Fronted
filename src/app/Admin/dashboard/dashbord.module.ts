@@ -5,18 +5,20 @@ import { MfacultySubRoutingModule } from './dashbord-routing.module'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'app/shared/auth/token-interceptor.service';
 
+
 @NgModule({
   imports: [
     CommonModule,
-    MfacultySubRoutingModule
+    MfacultySubRoutingModule,
   ],
   declarations: [DashboardComponent],
-  providers : [
+  providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    // NgbCarouselConfig
   ]
 
 })

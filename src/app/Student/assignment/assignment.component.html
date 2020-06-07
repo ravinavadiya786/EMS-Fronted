@@ -1,0 +1,109 @@
+<ng-template #content let-modal class="fade shadow-z-2">
+  <div class="modal-header">
+    <h4 class="modal-title">Submit Assignment</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-body taskboard-modal">
+      <div class="container">
+        <input type="file" class="form-control-file" (change)="changefile($event)" />
+      </div>
+      <div class="modal-footer">
+        <button type="submit" (click)="postdata()" [disabled]="!file"
+          class="btn btn-success float-right btn-block btn-raised shadow-z-1">
+          Submit
+        </button>
+      </div>
+    </div>
+
+  </div>
+</ng-template>
+
+<div class="row ">
+  <div class="col-6">
+    <button type="button" class="btn btn-lg gradient-mint text-white btn-block" (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample1">
+      Availble Assignment
+    </button>
+  </div>
+  <div class="col-6">
+    <button type="button" class="btn btn-lg  gradient-blueberry text-white btn-block"
+      (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="collapseExample2">
+      Submited Assignment
+    </button>
+  </div>
+</div>
+
+<div id="collapseExample1" [ngbCollapse]="isCollapsed" class="card">
+  <div class="card-header">
+    <p class="text-center">
+      Aavaible Assignment
+    </p>
+  </div>
+  <div class="card-content">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover thead-light ">
+          <thead>
+            <tr>
+              <th *ngFor="let coulmn of coulmns" scope="col">
+                {{coulmn}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of Availble_Assignment">
+              <td>{{ item.Title  }}</td>
+              <td>{{ item.Faculty_ID?.Name  }}</td>
+              <td>{{ item.Sub_ID?.Sub_Name  }}</td>
+              <td class="text-center"><a [href]="item.Asmt_file" target="_blank"><i
+                    class="ft-file-text font-medium-5"></i></a></td>
+              <td>{{ item.Submision_Date  }}</td>
+              <td>{{ item.Date }}</td>
+
+              <td class="text-center"><i (click)="openmodel(content,item._id)"
+                  class="ft-file-plus text-info font-medium-3 mr-2"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="collapseExample2" [ngbCollapse]="!isCollapsed" class="card">
+  <div class="card-header">
+    <p class="text-center">
+      Submited Assignment
+    </p>
+  </div>
+  <div class="card-content">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover thead-light ">
+          <thead>
+            <tr>
+              <th *ngFor="let coulmn of Submited_Assignment_coulmns" scope="col">
+                {{coulmn}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of Submited_Assignment">
+              <td>{{ item.Title  }}</td>
+              <td>{{ item.Submit_Date  }}</td>
+              <td>{{ item.Created_on  }}</td>
+              <td>{{ item.Submision_Date  }}</td>
+              <td>{{ item.Faculty_Name  }}</td>
+              <td>{{ item.Subject_Name  }}</td>
+              <td class="text-center"><a [href]="item.Asmt_file" target="_blank"><i class="ft-file-text font-medium-5"></i></a></td>
+              <td class="text-center"><a [href]="item.Stud_Asmt_file " target="_blank"><i class="ft-file-text font-medium-5"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

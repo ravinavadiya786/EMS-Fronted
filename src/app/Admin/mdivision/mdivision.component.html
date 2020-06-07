@@ -1,5 +1,5 @@
 <div class="row text-left">
-  <div  *ngIf="show" class="col-sm-12">
+  <div *ngIf="show" class="col-sm-12">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">Add Division</h4>
@@ -51,30 +51,28 @@
       </div>
     </div>
   </div>
-       
-<!--Confirm Action Starts-->
+</div>
+  <!--Confirm Action Starts-->
 
-<section id="action">
-  <div class="row text-left">
-    <div class="col-sm-12">
-      <div class="card">
-        <div class="card-header" style="overflow : hidden">
-          <h4 class="card-title" style="float:left;">Manage Division</h4>
-          
-             <a display="inline" style="float:right;" (click)="show = !show" href="javascript:void(0)" class="btn btn-raised mr-1 shadow-z-2 btn-primary">Add New Division</a>
-            
-        </div>
-
-        <div class="card-content">
-          <div class="card-body">
-            <div class="table-responsive">
-              <ng2-smart-table [settings]="alertsettings" [source]="tbldata" (deleteConfirm)="onDeleteConfirm($event)"
-                (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
+  <section id="action">
+    <div class="row text-left">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header" style="overflow : hidden">
+            <h4 class="card-title" style="float:left;">Manage Division</h4>
+            <a display="inline" style="float:right;" (click)="show = !show" href="javascript:void(0)"
+              class="btn btn-raised mr-1 shadow-z-2 btn-primary">Add New Division</a>
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="table-responsive">
+                <ng2-smart-table [settings]="alertsettings" [source]="tbldata" (deleteConfirm)="onDeleteConfirm($event)"
+                  (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!--Confirm Action Ends-->
+  </section>
+  <!--Confirm Action Ends-->

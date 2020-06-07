@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AssignmentRoutingModule } from './assignment-routing.module';
 import { AssignmentComponent } from './assignment.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -14,7 +16,9 @@ import { TokenInterceptorService } from 'app/shared/auth/token-interceptor.servi
     CommonModule,
     AssignmentRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    Ng2SmartTableModule,
+    NgbModule
   ],
   providers: [
     {

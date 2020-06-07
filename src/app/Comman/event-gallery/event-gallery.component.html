@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="card w-100">
+        <div class="card-header">
+            <h4 class="card-title text-center">Upload Event-Image-Gallery</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body w-50">
+                <input type="file" class="form-control-file form-control" (change)="changefile($event)"
+                    accept="image/*">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-center">Event-Image-Gallery</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body w-50">
+                <div *ngIf="images.length" swiper>
+                    <div class="swiper-wrapper"
+                        style="transition-duration: 0ms; transform: translate3d(331.476px, 0px, 0px);">
+                        <div *ngFor="let image of images" class="swiper-slide rounded shadow-lg "
+                            style="height: 350px;">
+                            <img class="img-fluid rounded " style="width: inherit; height: inherit;" [src]="image"
+                                alt="banner">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

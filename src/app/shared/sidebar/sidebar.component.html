@@ -29,7 +29,7 @@
                 [routerLinkActive]="menuItem.submenu.length != 0 ? '' : 'active'"
                 [routerLinkActiveOptions]="{exact: true}">
                 <a appSidebarAnchorToggle [routerLink]="menuItem.class === '' ? [menuItem.path] : null"
-                    *ngIf="!menuItem.isExternalLink; else externalLinkBlock">
+                    *ngIf="!menuItem.isExternalLink; else externalLinkBlock" >
                     <i [ngClass]="[menuItem.icon]"></i>
                     <span class="menu-title">{{menuItem.title  }}</span>
                     <span *ngIf="menuItem.badge != '' " [ngClass]="[menuItem.badgeClass]">{{menuItem.badge}}</span>
@@ -48,7 +48,7 @@
                         [routePath]="menuSubItem.path" [classes]="menuSubItem.class" [title]="menuSubItem.title"
                         [parent]="menuItem.title" *ngFor="let menuSubItem of menuItem.submenu"
                         [routerLinkActive]="menuSubItem.submenu.length > 0 ? '' : 'active'"
-                        [ngClass]="{'has-sub': menuSubItem.class === 'has-sub' ? true: false, 'open': activeTitles.includes(menuSubItem.title) && !nav_collapsed_open ? true : false, 'nav-collapsed-open': nav_collapsed_open && activeTitles.includes(menuSubItem.title)}">
+                        [ngClass]="{'has-sub': menuSubItem.class === 'has-sub' ? true: false, 'open': activeTitles.includes(menuSubItem.title) , 'nav-collapsed-open': activeTitles.includes(menuSubItem.title)}">
                         <a appSidebarAnchorToggle
                             [routerLink]="menuSubItem.submenu.length > 0 ? null : [menuSubItem.path]"
                             *ngIf="!menuSubItem.isExternalLink; else externalSubLinkBlock">

@@ -23,19 +23,31 @@ import {
 import { AppComponent } from "./app.component";
 import { FullLayoutComponent } from "./Main_layout/full-layout.component";
 
-// import { DragulaService } from "ng2-dragula";
 import { AuthService } from "./shared/auth/auth.service";
 import { SidebarconfigService } from './shared/sidebar/sidebarconfig.service'
 import { AuthGuard } from "./shared/auth/auth-guard.service";
 import { MySwitchComponent } from './switch/switch.component';
 import { loginComponent } from './login/login.component';
-
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelPropagation: false
 };
 
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  keyboard: true,
+  mousewheel: true,
+  scrollbar: false,
+  navigation: true,
+  pagination: true,
+  direction: 'horizontal',
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  spaceBetween: 35,
+  autoplay: true,
+};
 
 @NgModule({
   declarations: [AppComponent, FullLayoutComponent, MySwitchComponent, loginComponent],
@@ -58,6 +70,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SidebarconfigService,
     AuthGuard,
     // DragulaService,
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    },
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
+import dateformat from 'dateformat';
 
 @Component({
   selector: 'app-test',
@@ -15,6 +16,7 @@ export class TestComponent implements OnInit {
   Test_Names: Array<any> = [];
   Test_Results: Array<any>;
   Coulmn: any;
+  public isCollapsed = false;
 
   timer: number = 0;
   is_Start: boolean = false;
@@ -35,6 +37,8 @@ export class TestComponent implements OnInit {
           WrongAnsCnt: item.WrongAnsCnt,
           Test_Name: item.Test_Master_ID.Test_Name,
           Sub_Name: item.Test_Master_ID.Subject_ID.Sub_Name,
+          Faculty_Name: item.Test_Master_ID.Faculty_ID.Name,
+          Completed_Date: dateformat(new Date(item.Completed_Date), 'dddd, mmmm dS, yyyy, h:MM:ss TT')
         }
       })
 
@@ -59,7 +63,14 @@ export class TestComponent implements OnInit {
           },
           Sub_Name: {
             title: 'Subject Name',
-          }
+          },
+          Faculty_Name: {
+            title: 'Faculty'
+          },
+          Completed_Date: {
+            title: 'Date'
+          },
+
         }
       }
 
@@ -116,7 +127,7 @@ export class TestComponent implements OnInit {
     this.WrongAnsCnt = 0
     this.TestArr = this.AlllTestArr.filter(item => item.Test_Master_ID?._id == _id)
     this.is_Start = true
-    // this.startCountdown(1)
+    this.startCountdown(1)
   }
 
   NextQuestion(Ansindex: number, correctAns: number) {
@@ -133,7 +144,6 @@ export class TestComponent implements OnInit {
   }
 
   startCountdown(seconds: number) {
-    // let counter = seconds;
     let counter = seconds * 60;
 
 

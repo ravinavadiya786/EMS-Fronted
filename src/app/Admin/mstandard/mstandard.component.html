@@ -12,18 +12,18 @@
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
                   <label for="userinput1">Course_ID
-                  <select formControlName="Course_ID" class="form-control">
-                    <option selected="selected" disabled="" value="">Select Course</option>
-                    <option *ngFor="let item of courses" value="{{item._id}}">{{item.Course_Name}}</option>
-                  </select>
-                </label>
+                    <select formControlName="Course_ID" class="form-control">
+                      <option selected="selected" disabled="" value="">Select Course</option>
+                      <option *ngFor="let item of courses" value="{{item._id}}">{{item.Course_Name}}</option>
+                    </select>
+                  </label>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
                   <label for="stdname">Standard</label>
                   <input type="text" formControlName="Name" id="userinput2" class="form-control border-primary"
-                    placeholder="Standard Name" >
+                    placeholder="Standard Name">
                 </div>
               </div>
             </div>
@@ -40,7 +40,7 @@
       </div>
     </div>
   </div>
-       
+</div>
 <!--Confirm Action Starts-->
 
 <section id="action">
@@ -48,8 +48,9 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header" style="overflow : hidden">
-          <h4 class="card-title" style="float:left;">Manage Standard</h4>          
-             <a display="inline" style="float:right;" (click)="show = !show" href="javascript:void(0)" class="btn btn-raised mr-1 shadow btn-primary">Add New Standard</a> 
+          <h4 class="card-title" style="float:left;">Manage Standard</h4>
+          <a display="inline" style="float:right;" (click)="show = !show" href="javascript:void(0)"
+            class="btn btn-raised mr-1 shadow btn-primary">Add New Standard</a>
         </div>
         <div class="card-content">
           <div class="card-body">
@@ -64,6 +65,3 @@
   </div>
 </section>
 <!--Confirm Action Ends-->
-
-
-

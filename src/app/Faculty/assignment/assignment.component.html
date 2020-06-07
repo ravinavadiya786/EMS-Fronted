@@ -1,56 +1,64 @@
 <div class="row">
-    <button class="btn btn-primary float-right shadow-z-3 btn-block btn-raised">
+    <button (click)="show = !show" class="btn btn-primary float-right shadow-z-3 btn-block btn-raised">
         <div class="d-inline-flex">
-            <div class="m-2"><i class="ft-file-plus font-medium-5 "></i></div>
-            <h5 class="m-2 font-weight-bold"> Add Assignment </h5>
-            <div class="m-2"><i class="ft-file-plus font-medium-5 "></i></div>
+            <div style="padding: 2px 2px 0px 2px;">
+                <i class="ft-file-plus font-medium-5"></i>
+            </div>
+            <h5 style="padding: 2px 2px 0px 2px;" class="mr-2 ml-2 font-weight-bold">
+                Add Assignment
+            </h5>
+            <div style="padding: 2px 2px 0px 2px;">
+                <i class="ft-file-plus font-medium-5"></i>
+            </div>
         </div>
     </button>
 </div>
 
-
 <div class="row text-left">
-    <div class="col-md-12">
+    <div *ngIf="show" class="col-md-12">
         <div class="card">
             <div class="card-header pb-2">
                 <h4 class="card-title" id="bordered-layout-icons">Add Assignment</h4>
             </div>
             <div class="card-content">
                 <div class="px-3">
-                    <form [formGroup]="assignmentform" (ngSubmit)="postdata()" class="form form-horizontal form-bordered ng-untouched ng-pristine ng-valid" >
+                    <form [formGroup]="assignmentform" (ngSubmit)="postdata()"
+                        class="form form-horizontal form-bordered ng-untouched ng-pristine ng-valid">
                         <div class="form-body">
-
                             <div class="form-group row">
                                 <label class="col-md-3 font-weight-bold label-control" for="Asmt_file">Upload Assignment
                                     File</label>
                                 <div class="col-md-9">
                                     <div class="position-relative">
                                         <div class="custom-file">
-                                            <!-- (change)="changefile($event)"  -->
-                                            <input class="custom-file-input" id="Asmt_file" formcontrolname="Asmt_file"
-                                                type="file" />
+                                            <input class="custom-file-input" id="Asmt_file"
+                                                (change)="changefile($event)" type="file" />
                                             <label class="custom-file-label" for="Asmt_file">
                                                 Upload Assignment Files
                                             </label>
-                                            <label *ngIf="is_submtted && getformvalue.Asmt_file.errors?.required" class="text-danger">Assignment Files is required</label>
+                                            <label *ngIf="is_submtted && !file" class="text-danger">Assignment Files is
+                                                required</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-md-3 font-weight-bold  label-control" for="timesheetinput2">Select
+                                <label class="col-md-3 font-weight-bold label-control" for="Sub_ID">Select
                                     Subject</label>
                                 <div class="col-md-9">
                                     <div class="position-relative has-icon-left">
-                                        <select formcontrolname="Sub_ID" class="form-control">
-                                            <option> BCA</option>
-                                            <option> BBBA</option>
-                                            <option> BB1</option>
+                                        <select formControlName="Sub_ID" class="form-control">
+                                            <option *ngFor="let item of subject" value="{{ item._id }}">
+                                                {{ item.Sub_Name }}</option>
                                         </select>
-                                        <div class="form-control-position"><i class="ft-book"></i></div>
-                                        <label *ngIf="is_submtted && getformvalue.Sub_ID.errors?.required" class="text-danger">Subject is required</label>
-
+                                        <div class="form-control-position">
+                                            <i class="ft-book"></i>
+                                        </div>
+                                        <label *ngIf="
+                                                is_submtted &&
+                                                getformvalue.Sub_ID.errors?.required
+                                            " class="text-danger">Subject is required</label>
                                     </div>
                                 </div>
                             </div>
@@ -59,11 +67,17 @@
                                 <label class="col-md-3 font-weight-bold label-control" for="Submision_Date">Date</label>
                                 <div class="col-md-9">
                                     <div class="position-relative has-icon-left">
-                                        <input class="form-control" id="Submision_Date" formcontrolname="Submision_Date"
-                                            type="date">
-                                        <div class="form-control-position"><i class="ft-message-square"></i></div>
-                                        <label *ngIf="is_submtted && getformvalue.Submision_Date.errors?.required" class="text-danger">Submision Date is required</label>
+                                        <input class="form-control" id="Submision_Date" formControlName="Submision_Date"
+                                            type="date" />
 
+                                        <div class="form-control-position">
+                                            <i class="ft-message-square"></i>
+                                        </div>
+                                        <label *ngIf="
+                                                is_submtted &&
+                                                getformvalue.Submision_Date.errors
+                                                    ?.required
+                                            " class="text-danger">Submision Date is required</label>
                                     </div>
                                 </div>
                             </div>
@@ -74,28 +88,84 @@
                                 </label>
                                 <div class="col-md-9">
                                     <div class="position-relative has-icon-left">
-                                        <textarea class="form-control" id="Title" formcontrolname="Title" placeholder="notes"
-                                            rows="5">
+                                        <textarea class="form-control" id="Title" formControlName="Title"
+                                            placeholder="notes" rows="5">
                                         </textarea>
-                                        <div class="form-control-position"><i class="ft-file"></i>
+                                        <div class="form-control-position">
+                                            <i class="ft-file"></i>
                                         </div>
-                                        <label *ngIf="is_submtted && getformvalue.Title.errors?.required" class="text-danger">Submision Date is required</label>
-
+                                        <label *ngIf="
+                                                is_submtted &&
+                                                getformvalue.Title.errors?.required
+                                            " class="text-danger">Submision Date is required</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-actions center">
-                            <button class="btn btn-raised btn-warning mr-1" type="button">
+                            <button class="btn btn-raised btn-warning mr-1" type="reset">
                                 <i class="ft-x"></i>
                                 Cancel
                             </button>
-                            <button class="btn btn-raised btn-primary" type="button">
+                            <button class="btn btn-raised btn-primary" type="submit">
                                 <i class="fa fa-check-square-o"></i>
                                 Save
                             </button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-6">
+        <button type="button" class="btn btn-lg gradient-mint text-white btn-block" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample1">
+            Availble Assignment
+        </button>
+    </div>
+    <div class="col-6">
+        <button type="button" class="btn btn-lg     gradient-blueberry text-white btn-block"
+            (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="collapseExample2">
+            Submited Assignment
+        </button>
+    </div>
+</div>
+
+<div id="collapseExample1" [ngbCollapse]="isCollapsed">
+    <div class="card">
+        <div class="card-header" style="overflow : hidden">
+            <h4 class="card-title text-center">Availble Assignment
+                <div display="inline" style="float:right;">
+                    <i (click)="fetchstan()" class="ft-refresh-ccw font-large-1 blue-grey darken-4 mr-1"></i>
+                </div>
+            </h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <ng2-smart-table [settings]="assignmentData_settings" [source]="assignmentData"></ng2-smart-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="collapseExample2" [ngbCollapse]="!isCollapsed">
+    <div class="card">
+        <div class="card-header" style="overflow : hidden">
+            <h4 class="card-title text-center">Submited Assignment
+                <div display="inline" style="float:right;">
+                    <i (click)="fetchstan()" class="ft-refresh-ccw font-large-1 blue-grey darken-4 mr-1"></i>
+                </div>
+            </h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <ng2-smart-table [settings]="Submited_Assignment_settings" [source]="Submited_Assignment"></ng2-smart-table>
                 </div>
             </div>
         </div>

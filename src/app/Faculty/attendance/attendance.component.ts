@@ -119,7 +119,6 @@ export class AttendanceComponent implements OnInit {
 
   changefile(e) {
     this.isshow  = true;
-  
     this.postrequest(e.target.files[0])
   }
 

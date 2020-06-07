@@ -20,7 +20,7 @@ export class MstudentComponent implements OnInit {
 
 
     fetchstan() {
-        this.http.get("https://college-managment-system.herokuapp.com/Admin/Student").subscribe((data: any) => {
+        this.http.get("http://localhost:8050/Admin/Student").subscribe((data: any) => {
             this.tbldata = data
             var that = this
 
@@ -48,7 +48,7 @@ export class MstudentComponent implements OnInit {
                         renderComponent: MySwitchComponent,
                         onComponentInitFunction(instance) {
                             instance.save.subscribe((data: any) => {
-                                that.http.put("https://college-managment-system.herokuapp.com/Admin/Student", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                                that.http.put("http://localhost:8050/Admin/Student", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                                     console.log(data)
                                     if (data.Error) {
                                         that.toast.error(data.Error);
@@ -103,7 +103,7 @@ export class MstudentComponent implements OnInit {
             } else {
                 console.log(event.data)
 
-                that.http.delete("https://college-managment-system.herokuapp.com/Admin/Student?_id=" + event.data._id).subscribe((data: any) => {
+                that.http.delete("http://localhost:8050/Admin/Student?_id=" + event.data._id).subscribe((data: any) => {
                     if (data.Error) {
                         that.toast.error(data.Error);
                     } else {

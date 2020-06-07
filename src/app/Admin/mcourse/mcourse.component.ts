@@ -25,7 +25,7 @@ export class McourseComponent implements OnInit {
 
 
   fetchstan() {
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Course").subscribe((data: any) => {
+    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,
@@ -40,7 +40,7 @@ export class McourseComponent implements OnInit {
 
   ngOnInit() {
     this.fetchstan()
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Course").subscribe((data: any) => {
+    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => {
       this.courses = data
       var that = this
 
@@ -73,7 +73,7 @@ export class McourseComponent implements OnInit {
             renderComponent: MySwitchComponent,
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
-                that.http.put("https://college-managment-system.herokuapp.com/Admin/Course", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("http://localhost:8050/Admin/Course", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   console.log(data)
                   if (data.Error) {
                     that.toast.error(data.Error);
@@ -98,7 +98,7 @@ export class McourseComponent implements OnInit {
 
 
   postdata() {
-    this.http.post("https://college-managment-system.herokuapp.com/Admin/Course", this.courseform.value).subscribe((data: any) => {
+    this.http.post("http://localhost:8050/Admin/Course", this.courseform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -135,7 +135,7 @@ export class McourseComponent implements OnInit {
       } else {
         console.log(event.data)
 
-        that.http.delete("https://college-managment-system.herokuapp.com/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("http://localhost:8050/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -178,7 +178,7 @@ export class McourseComponent implements OnInit {
         )
       } else {
         console.log(event.data)
-        that.http.put("https://college-managment-system.herokuapp.com/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
+        that.http.put("http://localhost:8050/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

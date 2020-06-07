@@ -1,4 +1,4 @@
-<button class="btn btn-primary float-right btn-block btn-raised shadow-z-2" (click)="isCollapsed = !isCollapsed"
+<button class="btn btn-primary gradient-indigo-dark-blue float-right btn-block btn-raised shadow-z-2" (click)="isCollapsed = !isCollapsed"
 	[attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
 	Add Test
 </button>
@@ -20,7 +20,7 @@
 							<div class="row">
 								<div class="form-group col-md-5 mb-2 m-1">
 									<label class="text-primary text-uppercase" for="Course_ID">Select Course</label>
-									<select formControlName="Course_ID" class="form-control">
+									<select formControlName="Course_ID" class="form-control" (change)="GetsubjectBuCourse($event.target.value)">
 										<option *ngFor="let items of course" value="{{ items._id }}">
 											{{ items.Course_Name }}</option>
 									</select>
@@ -46,10 +46,15 @@
 							<label *ngIf="submitted && getformvalue.Test_Name.errors?.required" class="text-danger">Test
 								Name is required</label>
 
-							<h4 class="text-center m-2 card-title">Questions Details</h4>
-
+								<div class="row text-center m-4">
+									<button type="button" class="btn w-100 gradient-blue-indigo text-white btn-md text-white mt-1"
+									(click)="AddQuestions()">
+									<i class="fa fa-check-square-o mr-2"></i>Add More Questions</button>
+								</div>
+							<h4 class="text-center m-4 card-title">Questions Details</h4>
+					
 							<div formArrayName="ArrQuestions">
-
+	
 								<div *ngFor="let item of sellingPoints.controls; let pointIndex=index"
 									[formGroupName]="pointIndex">
 									<div class="row">
@@ -58,13 +63,10 @@
 											<input class="form-control" formControlName="Question" />
 											<label
 												*ngIf="submitted && sellingPoints.controls[pointIndex].get('Question').errors?.required"
-												class="text-danger">Quetion is required</label>
+												class="text-danger">Question is required</label>
 										</div>
 
-										<div class="col-md-2">
-											<button type="button" class="btn btn-primary btn-raised btn-sm mt-1"
-												(click)="AddQuestions()">
-												<i class="fa fa-check-square-o"></i>Add Question</button>
+										<div class="form-group col-md-5" style="margin-top: auto;margin-bottom: auto;">
 											<button type="button" class="btn btn-raised btn-danger btn-sm"
 												(click)="RemoveQuestions(pointIndex)">
 												<i class="ft-x"></i> Remove
@@ -81,7 +83,7 @@
 													*ngIf="submitted && sellingPoints.controls[pointIndex].get('AnsA').errors?.required"
 													class="text-danger">AnsA is required</label>
 
-												<input type="radio" value="1" formControlName="Correct_Ans" />
+												<input type="radio" value="1" class="mt-1" formControlName="Correct_Ans" />
 
 											</label>
 										</div>
@@ -91,7 +93,7 @@
 												<label
 													*ngIf="submitted && sellingPoints.controls[pointIndex].get('AnsB').errors?.required"
 													class="text-danger">AnsB is required</label>
-												<input type="radio" value="2" formControlName="Correct_Ans" />
+												<input type="radio" value="2" class="mt-1" formControlName="Correct_Ans" />
 
 											</label>
 										</div>
@@ -104,7 +106,7 @@
 												<label
 													*ngIf="submitted && sellingPoints.controls[pointIndex].get('AnsC').errors?.required"
 													class="text-danger">AnsC is required</label>
-												<input type="radio" value="3" formControlName="Correct_Ans" />
+												<input type="radio" value="3" class="mt-1" formControlName="Correct_Ans" />
 
 											</label>
 										</div>
@@ -113,8 +115,8 @@
 												Ans D: <input class="form-control" formControlName="AnsD" />
 												<label
 													*ngIf="submitted && sellingPoints.controls[pointIndex].get('AnsD').errors?.required"
-													class="text-danger">AnsC is required</label>
-												<input type="radio" value="4" formControlName="Correct_Ans" />
+													class="text-danger">AnsD is required</label>
+												<input type="radio" value="4" class="mt-1" formControlName="Correct_Ans" />
 
 											</label>
 										</div>
@@ -124,6 +126,7 @@
 										class="text-danger">Please Select Alteast One Answer</label>
 								</div>
 							</div>
+							
 							<div class="form-actions left">
 								<button type="reset" class="btn btn-raised btn-warning mr-1"
 									(click)="isCollapsed = !isCollapsed">
@@ -142,9 +145,17 @@
 </div>
 
 
-<div class="table-responsive">
-	<ng2-smart-table [settings]="alertsettings" (deleteConfirm)="onDeleteConfirm($event)"
-		(editConfirm)="onSaveConfirm($event)" [source]="testData"></ng2-smart-table>
+<div class="row text-left">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-content">
+				<div class="card-body">
+					<div class="table-responsive">
+						<ng2-smart-table [settings]="alertsettings" (deleteConfirm)="onDeleteConfirm($event)"
+							(editConfirm)="onSaveConfirm($event)" [source]="testData"></ng2-smart-table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-<!--  -->

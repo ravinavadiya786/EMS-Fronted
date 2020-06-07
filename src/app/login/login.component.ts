@@ -13,10 +13,14 @@ import * as jwt_decode from 'jwt-decode';
 
 export class loginComponent implements OnInit {
 
-   ENDURL = "http://localhost:8050"
+  ENDURL = "http://localhost:8050"
   //  https://college-managment-system.herokuapp.com"
 
-  constructor(public http: HttpClient, private toast: ToastrService, private Router: Router) { }
+  constructor(public http: HttpClient, private toast: ToastrService, private Router: Router) {
+    if (localStorage.getItem('token')) {
+      this.Router.navigate([jwt_decode(localStorage.getItem('token')).role])
+    }
+  }
 
   loginform: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -34,7 +38,6 @@ export class loginComponent implements OnInit {
         this.toast.success('Success Login');
       } else {
         this.toast.clear()
-
         this.toast.error(data.Error, 'Error', {
           closeButton: true,
           tapToDismiss: true,

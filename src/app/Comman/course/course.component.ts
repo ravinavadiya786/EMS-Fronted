@@ -13,7 +13,7 @@ export class CourseComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   fetchstan() {
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Course").subscribe((data: any) => {
+    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => {
       this.tbldata = data
 
       this.alertsettings = {

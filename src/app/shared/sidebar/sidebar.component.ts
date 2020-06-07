@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 
 import { SidebarconfigService } from './sidebarconfig.service';
 // import { RouteInfo } from "./sidebar.metadata";

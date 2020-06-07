@@ -1,4 +1,4 @@
-<button class="btn btn-primary float-right btn-block btn-raised shadow-z-2" (click)="isCollapsed = !isCollapsed"
+<button class="btn btn-primary gradient-back-to-earth  btn-lg float-right btn-block btn-raised shadow-z-2" (click)="isCollapsed = !isCollapsed"
   [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
   Add Time Table
 </button>
@@ -95,7 +95,17 @@
   </div>
 </div>
 
-<div class="table-responsive">
-  <ng2-smart-table [settings]="alertsettings" [source]="tbldata" (deleteConfirm)="onDeleteConfirm($event)"
-    (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
+<div class="row text-left">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="table-responsive">
+            <ng2-smart-table [settings]="alertsettings" [source]="tbldata" (deleteConfirm)="onDeleteConfirm($event)"
+              (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

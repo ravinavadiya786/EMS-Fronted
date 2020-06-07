@@ -1,0 +1,169 @@
+<div class="row">
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card bg-primary">
+      <div class="card-content">
+        <div class="card-body pt-2 pb-0">
+          <div class="media">
+            <div class="media-body white text-left">
+              <h3 class="font-large-1 mb-0">{{students}}</h3>
+              <span>Total Students</span>
+            </div>
+            <div class="media-right white text-right">
+              <i class="icon-user font-large-1"></i>
+            </div>
+          </div>
+        </div>
+        <div id="Widget-line-chart" class="height-75 WidgetlineChart WidgetlineChartShadow mb-3">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card bg-warning">
+      <div class="card-content">
+        <div class="card-body pt-2 pb-0">
+          <div class="media">
+            <div class="media-body white text-left">
+              <h3 class="font-large-1 mb-0">{{faculty || 0}}</h3>
+              <span>Total Faculty</span>
+            </div>
+            <div class="media-right white text-right">
+              <i class="icon-users font-large-1"></i>
+            </div>
+          </div>
+        </div>
+        <div id="Widget-line-chart2" class="height-75 WidgetlineChart WidgetlineChartShadow mb-3">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card bg-success">
+      <div class="card-content">
+        <div class="card-body pt-2 pb-0">
+          <div class="media">
+            <div class="media-body white text-left">
+              <h3 class="font-large-1 mb-0">{{courses}}</h3>
+              <span>Total Courses</span>
+            </div>
+            <div class="media-right white text-right">
+              <i class="icon-graph font-large-1"></i>
+            </div>
+          </div>
+        </div>
+        <div id="Widget-line-chart2" class="height-75 WidgetlineChart WidgetlineChartShadow mb-3">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card bg-danger">
+      <div class="card-content">
+        <div class="card-body pt-2 pb-0">
+          <div class="media">
+            <div class="media-body white text-left">
+              <h3 class="font-large-1 mb-0">{{standard}}</h3>
+              <span>Total Standards</span>
+            </div>
+            <div class="media-right white text-right">
+              <i class="icon-wallet font-large-1"></i>
+            </div>
+          </div>
+        </div>
+        <div id="Widget-line-chart2" class="height-75 WidgetlineChart WidgetlineChartShadow mb-3">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card bg-danger">
+      <div class="card-content">
+        <div class="card-body pt-2 pb-0">
+          <div class="media">
+            <div class="media-body white text-left">
+              <h3 class="font-large-1 mb-0">{{divisions}}</h3>
+              <span>Total Divisions</span>
+            </div>
+            <div class="media-right white text-right">
+              <i class="icon-wallet font-large-1"></i>
+            </div>
+          </div>
+        </div>
+        <div id="Widget-line-chart2" class="height-75 WidgetlineChart WidgetlineChartShadow mb-3">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card bg-primary">
+      <div class="card-content">
+        <div class="card-body pt-2 pb-0">
+          <div class="media">
+            <div class="media-body white text-left">
+              <h3 class="font-large-1 mb-0">{{subject}}</h3>
+              <span>Total Subject</span>
+            </div>
+            <div class="media-right white text-right">
+              <i class="icon-wallet font-large-1"></i>
+            </div>
+          </div>
+        </div>
+        <div id="Widget-line-chart2" class="height-75 WidgetlineChart WidgetlineChartShadow mb-3">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title text-center">Event-Image-Gallery</h4>
+      </div>
+      <div class="card-content">
+          <div class="card-body w-50">
+              <div  *ngIf="images.length" swiper>
+                  <div class="swiper-wrapper" style="transition-duration: 0ms;
+                      transform: translate3d(331.476px, 0px, 0px);">
+                      <div *ngFor="let image of images" class="swiper-slide rounded shadow-lg "
+                          style="height: 350px;">
+                          <img class="img-fluid rounded " style="width: inherit; height: inherit;" [src]="image"
+                              alt="banner">
+                      </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<h2 class="divider line glow m-2 text-center mt-5 mb-5 text-info text-bold-700" contenteditable>Recents NoticeBoard</h2>
+
+<div *ngFor="let item of tbldata | slice:0:5">
+
+  <div class="card w-100 corners shadow-z-2">
+    <div class="card-header ">
+      <h4 class="card-title text-center">
+        {{item.Title}}
+      </h4>
+    </div>
+
+    <div class="card-content m-0 " aria-expanded="true">
+      <div class="card-body">
+        <p class="card-text">{{item.Desc}}</p>
+      </div>
+    </div>
+    <div class="card-footer m-0">
+      <small class="text-muted pt-1 ml-3 text-warning">{{item.Date ? item.Date.substr(0,10) : 'nol'}}</small>
+    </div>
+  </div>
+
+</div>
+
+<br /><br />

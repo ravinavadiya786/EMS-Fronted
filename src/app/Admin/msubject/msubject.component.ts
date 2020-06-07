@@ -30,7 +30,7 @@ export class MsubjectComponent implements OnInit {
 
 
   fetchstan() {
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Subject").subscribe((data: any) => {
+    this.http.get("http://localhost:8050/Admin/Subject").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,
@@ -85,7 +85,7 @@ export class MsubjectComponent implements OnInit {
             renderComponent: MySwitchComponent,
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
-                that.http.put("https://college-managment-system.herokuapp.com/Admin/Subject", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("http://localhost:8050/Admin/Subject", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   if (data.Error) {
                     that.toast.error(data.Error);
                   } else {
@@ -110,14 +110,14 @@ export class MsubjectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Course").subscribe((data: any) => this.courses = data)
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Standard").subscribe((data: any) => this.standards = data)
+    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => this.courses = data)
+    this.http.get("http://localhost:8050/Admin/Standard").subscribe((data: any) => this.standards = data)
     this.fetchstan()
   }
 
 
   postdata() {
-    this.http.post("https://college-managment-system.herokuapp.com/Admin/Subject", this.subjectform.value).subscribe((data: any) => {
+    this.http.post("http://localhost:8050/Admin/Subject", this.subjectform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -151,7 +151,7 @@ export class MsubjectComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.delete("https://college-managment-system.herokuapp.com/Admin/Subject?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("http://localhost:8050/Admin/Subject?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -193,7 +193,7 @@ export class MsubjectComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.put("https://college-managment-system.herokuapp.com/Admin/Subject", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
+        that.http.put("http://localhost:8050/Admin/Subject", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

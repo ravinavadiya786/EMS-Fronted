@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter, OnDestroy, OnInit, AfterViewInit } fro
 import { LayoutService } from '../services/layout.service';
 import { Subscription } from 'rxjs';
 import { ConfigService } from '../services/config.service';
-import { AuthService} from '../auth/auth.service'
+import { AuthService } from '../auth/auth.service'
 
 @Component({
   selector: "app-navbar",
@@ -20,8 +20,9 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   toggleHideSidebar = new EventEmitter<Object>();
 
   public config: any = {};
-
-  constructor(private layoutService: LayoutService, private configService: ConfigService,public AuthService : AuthService) {
+  role: string;
+  constructor(private layoutService: LayoutService, private configService: ConfigService, public AuthService: AuthService) {
+    this.role = this.AuthService.getRole()
 
 
     this.layoutSub = layoutService.changeEmitted$.subscribe(

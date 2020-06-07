@@ -53,7 +53,7 @@
           </div>
         </div>
         <div id="Widget-line-chart2" class="height-75 WidgetlineChart WidgetlineChartShadow mb-3">
-  
+
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@
           </div>
         </div>
         <div id="Widget-line-chart2" class="height-75 WidgetlineChart WidgetlineChartShadow mb-3">
- 
+
         </div>
       </div>
     </div>
@@ -122,7 +122,7 @@
 
 <h2 class="divider line glow m-2 text-center mt-5 mb-5 text-info text-bold-700" contenteditable>Recents NoticeBoard</h2>
 
-<div *ngFor="let item of tbldata">
+<div *ngFor="let item of tbldata | slice:0:5">
 
   <div class="card w-100 corners shadow-z-2">
     <div class="card-header ">
@@ -137,10 +137,8 @@
       </div>
     </div>
     <div class="card-footer m-0">
-      <small class="text-muted pt-1 ml-3 text-warning" >{{item.Date ? item.Date.substr(0,10) : 'nol'}}</small>
-      <div></div>
+      <small class="text-muted pt-1 ml-3 text-warning">{{item.Date ? item.Date.substr(0,10) : 'nol'}}</small>
     </div>
   </div>
 
 </div>
-<br /><br />
