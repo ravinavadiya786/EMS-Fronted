@@ -4,7 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
 import { MySwitchComponent } from '../../switch/switch.component';
 import { Router } from "@angular/router";
-
+import { AuthService } from '../../shared/auth/auth.service'
+import dateformat from 'dateformat';
 
 @Component({
     selector: 'app-mstudent',
@@ -15,53 +16,71 @@ export class MstudentComponent implements OnInit {
     tbldata: any;
     alertsettings: object;
     lastClickTime: number = 0;
-
-    constructor(public http: HttpClient, private Router: Router, private toast: ToastrService) { }
+    role: string
+    constructor(public http: HttpClient, private Router: Router, private toast: ToastrService, private AuthService: AuthService) {
+        this.role = this.AuthService.getRole()
+    }
 
 
     fetchstan() {
         this.http.get("http://localhost:8050/Admin/Student").subscribe((data: any) => {
-            this.tbldata = data
+            this.tbldata = data.map(item => {
+                return {
+                    ...item,
+                    Created_On: dateformat(item.Created_On, "fullDate"),
+                    Img_Path: `<img  src=${item.Img_Path} alt="avatar" height="45" width="50" class="rounded-circle" >`
+                }
+            })
             var that = this
 
             this.alertsettings = {
                 actions: {
                     add: false,
-                    edit: false
+                    edit: false,
+                    delete: this.role === "Admin" ? true : false,
                 },
                 delete: {
                     confirmDelete: true,
                     deleteButtonContent: '<i class="ft-x danger font-medium-1 mr-2"></i>'
                 },
                 columns: {
+                    Img_Path: {
+                        type: 'html',
+                        title: 'Image',
+                        filter: false,
+                        width: "40px"
+                    },
                     Name: {
                         title: 'Name',
                     },
-
+                    PhNo : {
+                        title: 'Phone No'
+                    },
                     Created_On: {
-                        title: 'Created On',
-
+                        title: 'Created On'
                     },
-                    Is_Active: {
-                        title: 'Active',
-                        type: 'custom',
-                        renderComponent: MySwitchComponent,
-                        onComponentInitFunction(instance) {
-                            instance.save.subscribe((data: any) => {
-                                that.http.put("http://localhost:8050/Admin/Student", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
-                                    console.log(data)
-                                    if (data.Error) {
-                                        that.toast.error(data.Error);
-                                    } else {
-                                        that.toast.success(data.Success);
-                                        that.fetchstan()
+                    ...(this.role === "Admin" && {
+                        Is_Active: {
+                            title: 'Active',
+                            type: 'custom',
+                            renderComponent: MySwitchComponent,
+                            onComponentInitFunction(instance) {
+                                instance.save.subscribe((data: any) => {
+                                    that.http.put("http://localhost:8050/Admin/Student", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                                        console.log(data)
+                                        if (data.Error) {
+                                            that.toast.error(data.Error);
+                                        } else {
+                                            that.toast.success(data.Success);
+                                            that.fetchstan()
 
-                                    }
+                                        }
+                                    });
                                 });
-                            });
-                        }
+                            }
 
-                    },
+                        }
+                    }),
                 },
 
                 attr: {

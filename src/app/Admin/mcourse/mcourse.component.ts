@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MySwitchComponent } from '../../switch/switch.component';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
@@ -14,13 +14,15 @@ export class McourseComponent implements OnInit {
   courses: any;
   tbldata: any;
   alertsettings;
-  show : boolean = false;
+  show: boolean = false;
+  is_submtted = false
+
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
 
   courseform: FormGroup = new FormGroup({
-    Course_Name: new FormControl(''),
-    Duration: new FormControl(''),
+    Course_Name: new FormControl('', Validators.required),
+    Duration: new FormControl('', Validators.required),
   });
 
 
@@ -96,12 +98,19 @@ export class McourseComponent implements OnInit {
 
   }
 
-
+  get getformvalue() {
+    return this.courseform.controls
+  }
   postdata() {
+    this.is_submtted = true
+    if (this.courseform.invalid) {
+      return
+    }
     this.http.post("http://localhost:8050/Admin/Course", this.courseform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
+        this.show = false
       } else {
         this.toast.error(data.Error);
       }
@@ -133,7 +142,6 @@ export class McourseComponent implements OnInit {
           'error'
         )
       } else {
-        console.log(event.data)
 
         that.http.delete("http://localhost:8050/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
@@ -177,7 +185,7 @@ export class McourseComponent implements OnInit {
           'error'
         )
       } else {
-        console.log(event.data)
+
         that.http.put("http://localhost:8050/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);

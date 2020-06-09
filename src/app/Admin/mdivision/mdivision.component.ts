@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MySwitchComponent } from '../../switch/switch.component';
 import { ToastrService } from 'ngx-toastr';
@@ -15,14 +15,15 @@ export class MdivisionComponent implements OnInit {
   tbldata: any;
   standards: any;
   alertsettings;
-  show : boolean = false;
+  show: boolean = false;
+  is_submtted = false
 
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
   divisionform: FormGroup = new FormGroup({
-    Course_ID: new FormControl(''),
-    Std_ID: new FormControl(''),
-    Division_Name: new FormControl(''),
+    Course_ID: new FormControl('', Validators.required),
+    Std_ID: new FormControl('', Validators.required),
+    Division_Name: new FormControl('', Validators.required),
   });
 
 
@@ -121,13 +122,20 @@ export class MdivisionComponent implements OnInit {
     this.fetchstan()
 
   }
-
+  get getformvalue() {
+    return this.divisionform.controls
+  }
   postdata() {
-    console.log(this.divisionform.value)
+    this.is_submtted = true
+    if (this.divisionform.invalid) {
+      return
+    }
     this.http.post("https://college-managment-system.herokuapp.com/Admin/Division", this.divisionform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
+        this.show = false
+
       } else {
         this.toast.error(data.Error);
       }

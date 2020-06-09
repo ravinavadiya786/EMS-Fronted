@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
 import { MySwitchComponent } from '../../switch/switch.component';
@@ -16,13 +16,14 @@ export class MstandardComponent implements OnInit {
     courses: any;
     tbldata: any;
     alertsettings;
-    show : boolean = false;
+    show: boolean = false;
+    is_submtted = false
 
     constructor(public http: HttpClient, private toast: ToastrService) { }
 
     standardform: FormGroup = new FormGroup({
-        Course_ID: new FormControl(''),
-        Name: new FormControl(''),
+        Course_ID: new FormControl('', Validators.required),
+        Name: new FormControl('', Validators.required),
     });
 
     fetchstan() {
@@ -50,7 +51,7 @@ export class MstandardComponent implements OnInit {
                     editButtonContent: '<i class="ft-edit-2 info font-medium-1 mr-2"></i>'
                 },
                 columns: {
-                
+
                     Name: {
                         title: 'Standard',
                     },
@@ -114,13 +115,20 @@ export class MstandardComponent implements OnInit {
         this.fetchstan()
     }
 
-
+    get getformvalue() {
+        return this.standardform.controls
+    }
     postdata() {
-        console.log(this.standardform.value)
+        this.is_submtted = true
+        if (this.standardform.invalid) {
+            return
+        }
         this.http.post("http://localhost:8050/Admin/Standard", this.standardform.value).subscribe((data: any) => {
             if (data.Success) {
                 this.toast.success(data.Success)
                 this.fetchstan()
+                this.show = false
+
             } else {
                 this.toast.error(data.Error);
             }

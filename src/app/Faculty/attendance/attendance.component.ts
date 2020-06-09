@@ -27,7 +27,7 @@ export class AttendanceComponent implements OnInit {
       height: { ideal: 2160 }
     }
   };
-  constructor(private renderer: Renderer2, private http: HttpClient, private toast: ToastrService ) { }
+  constructor(private renderer: Renderer2, private http: HttpClient, private toast: ToastrService) { }
 
 
   ngOnInit() {
@@ -94,10 +94,10 @@ export class AttendanceComponent implements OnInit {
   postrequest(img) {
     const formData = new FormData();
     formData.append('picture', img);
-    console.log('image',img)
+    console.log('image', img)
     // https://college-managment-system.herokuapp.com/Student/face
-    this.http.post(this.url, formData).subscribe((data:any) => {
-      console.log('data',data)
+    this.http.post(this.url, formData).subscribe((data: any) => {
+      console.log('data', data)
       this.toast.clear()
       data.Success.map(ele => {
         this.toast.success('', ele, {
@@ -106,7 +106,7 @@ export class AttendanceComponent implements OnInit {
         });
       })
       // {"Success":["Navadiya Rajkumar Babubhai"],"Found":1}
-      this.toast.info('',`Total Face ${data.Success.length} Is Found And ${data.Found} Students Are Presents`, {
+      this.toast.info('', `Total Face ${data.Success.length} Is Found And ${data.Found} Students Are Presents`, {
         closeButton: true,
         timeOut: 0
       });
@@ -118,7 +118,7 @@ export class AttendanceComponent implements OnInit {
   }
 
   changefile(e) {
-    this.isshow  = true;
+    this.isshow = true;
     this.postrequest(e.target.files[0])
   }
 

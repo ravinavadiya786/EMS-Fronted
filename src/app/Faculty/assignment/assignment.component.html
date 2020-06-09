@@ -66,10 +66,14 @@
                             <div class="form-group row">
                                 <label class="col-md-3 font-weight-bold label-control" for="Submision_Date">Date</label>
                                 <div class="col-md-9">
-                                    <div class="position-relative has-icon-left">
-                                        <input class="form-control" id="Submision_Date" formControlName="Submision_Date"
-                                            type="date" />
+                                    <div class="position-relative">
 
+                                            <mat-form-field class="example-full-width ">
+                                                <mat-label>Choose a date</mat-label>
+                                                <input matInput [min]="minDate" formControlName="Submision_Date" [matDatepicker]="picker">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                              </mat-form-field>
                                         <div class="form-control-position">
                                             <i class="ft-message-square"></i>
                                         </div>
@@ -97,7 +101,7 @@
                                         <label *ngIf="
                                                 is_submtted &&
                                                 getformvalue.Title.errors?.required
-                                            " class="text-danger">Submision Date is required</label>
+                                            " class="text-danger">Assignment Title /Notes is required</label>
                                     </div>
                                 </div>
                             </div>
@@ -121,14 +125,14 @@
 
 <div class="row ">
     <div class="col-6">
-        <button type="button" class="btn btn-lg gradient-mint text-white btn-block" (click)="isCollapsed = !isCollapsed"
+        <button type="button" class="btn btn-lg gradient-mint text-white btn-block" (click)="isCollapsed = false"
             [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample1">
             Availble Assignment
         </button>
     </div>
     <div class="col-6">
-        <button type="button" class="btn btn-lg     gradient-blueberry text-white btn-block"
-            (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="collapseExample2">
+        <button type="button" class="btn btn-lg gradient-blueberry text-white btn-block"
+            (click)="isCollapsed = true" [attr.aria-expanded]="isCollapsed" aria-controls="collapseExample2">
             Submited Assignment
         </button>
     </div>

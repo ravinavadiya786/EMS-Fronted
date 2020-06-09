@@ -29,11 +29,10 @@ export class SidebarconfigService {
       ]
     } else if (role === "Faculty") {
       return [
-
         { path: '/Faculty/dashbord', title: 'Dashboard', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-        { path: '/Faculty/mstudent', title: 'Student', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+        { path: '/Faculty/mstudent', title: 'View Student', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Faculty/attendance', title: 'Take Attendance', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-        { path: '/Faculty/vattendace', title: 'View Attendance', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+        { path: '/Comman/vattendace', title: 'View Attendance', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Faculty/test', title: 'Online Test', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Faculty/assignment', title: 'Manage Assignment', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Faculty/noticeboard', title: 'View Notice Board', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
@@ -53,10 +52,10 @@ export class SidebarconfigService {
     } else if (role === "Student") {
       return [
         { path: '/Student/dashbord', title: 'Dashboard', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-        { path: '/Student/vattendace', title: 'View Attendance', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Student/noticeboard', title: 'View Notice Board', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Student/mevent', title: 'View Event', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Student/timetable', title: 'View Time-Table', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+        { path: '/Comman/vattendace', title: 'View Attendance', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Student/test', title: 'Online Test', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Student/assignment', title: 'View Assignment', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Student/course', title: 'View Course', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },

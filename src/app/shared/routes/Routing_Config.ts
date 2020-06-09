@@ -63,12 +63,12 @@ export const FACULTY_ROUTES: Routes = [
     loadChildren: () => import('../../Faculty/dashboard/dashbord.module').then(m => m.DashbordModule),
   },
   {
-    path: 'attendance',
-    loadChildren: () => import('../../Faculty/attendance/attendance.module').then(m => m.AttendanceModule),
+    path: 'mstudent',
+    loadChildren: () => import('../../Admin/mstudent/mstudent.module').then(m => m.MstudentModule),
   },
   {
-    path: 'vattendace',
-    loadChildren: () => import('../../Faculty/vattendace/vattendace.module').then(m => m.VattendaceModule)
+    path: 'attendance',
+    loadChildren: () => import('../../Faculty/attendance/attendance.module').then(m => m.AttendanceModule),
   },
   {
     path: 'test',
@@ -190,5 +190,9 @@ export const Comman_ROUTES: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('../../Admin/profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
+    path: 'vattendace',
+    loadChildren: () => import('../../Comman/vattendace/vattendace.module').then(m => m.VattendaceModule)
   },
 ]

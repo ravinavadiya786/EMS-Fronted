@@ -18,7 +18,7 @@ export class AssignmentComponent implements OnInit {
     Submision_Date: new FormControl("", Validators.required),
     Title: new FormControl("", Validators.required),
   })
-
+  minDate=new Date()
   subject: any
   assignmentData_settings: any
   Submited_Assignment_settings: any

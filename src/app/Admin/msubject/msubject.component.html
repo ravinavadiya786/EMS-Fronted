@@ -11,29 +11,36 @@
               <h4 class="form-section"></h4>
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
-                  <label for="userinput1">Course_ID</label>
+                  <label for="Course_ID">Course_ID</label>
                   <select formControlName="Course_ID" class="form-control">
                     <option selected="selected" disabled="" value="">Select Course</option>
                     <option *ngFor="let item of courses" value="{{item._id}}">{{item.Course_Name}}</option>
                   </select>
-
+                  <label *ngIf="is_submtted && getformvalue.Course_ID.errors?.required" class="text-danger">
+                    Course is
+                    required</label>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
-                  <label for="userinput2">Standard_ID</label>
+                  <label for="Std_ID">Standard_ID</label>
                   <select formControlName="Std_ID" class="form-control">
                     <option selected="selected" disabled="" value="">Select Standard</option>
                     <option *ngFor="let items of standards" value="{{items._id}}">{{items.Name}}</option>
                   </select>
-
+                  <label *ngIf="is_submtted && getformvalue.Std_ID.errors?.required" class="text-danger">
+                    Standard is
+                    required</label>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
-                  <label for="subjectname">Subject</label>
-                  <input type="text" formControlName="Sub_Name" id="userinput3" class="form-control border-primary"
+                  <label for="Sub_Name">Subject</label>
+                  <input type="text" formControlName="Sub_Name" id="Sub_Name" class="form-control border-primary"
                     placeholder="Subject Name">
+                  <label *ngIf="is_submtted && getformvalue.Sub_Name.errors?.required" class="text-danger">
+                    Sub_Name is
+                    required</label>
                 </div>
               </div>
             </div>

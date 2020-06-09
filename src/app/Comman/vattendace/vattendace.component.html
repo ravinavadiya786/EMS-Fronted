@@ -1,12 +1,11 @@
-
 <div class="row text-left">
   <div class="col-sm-12">
     <div class="card">
       <div class="card-content">
         <div class="card-body">
           <div class="table-responsive">
-            <ng2-smart-table [settings]="alertsettings" [source]="AttendaceData" (deleteConfirm)="onDeleteConfirm($event)"
-            (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
+            <ng2-smart-table [settings]="alertsettings" [source]="AttendaceData"
+              (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
           </div>
         </div>
       </div>

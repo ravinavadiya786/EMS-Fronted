@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
+import { AuthService } from '../../shared/auth/auth.service';
+import dateformat from 'dateformat'
 
 @Component({
   selector: 'app-vattendace',
@@ -10,22 +12,35 @@ import swal from 'sweetalert2';
 })
 export class VattendaceComponent implements OnInit {
 
-  readonly url = 'http://localhost:8050/Faculty/Attendance';
+  url = 'http://localhost:8050/Faculty/Attendance';
   courses: any;
   tbldata: any;
   standards: any;
-  alertsettings;
+  alertsettings: any;
 
   AttendaceData: any;
-
-  constructor(private http: HttpClient, private toast: ToastrService) { }
+  role: string;
+  constructor(private http: HttpClient, private toast: ToastrService, private AuthService: AuthService) {
+    this.role = this.AuthService.getRole()
+  }
 
   fetchstan() {
-    this.http.get(this.url).subscribe(data => {
-      this.AttendaceData = data
+    this.http.get(this.url).subscribe((data: any) => {
+      this.AttendaceData = data.map(item => {
+        return {
+          ...item,
+          Date: dateformat(item.Date, "fullDate"),
+          Student_Name: item.Student_Id?.Name,
+          Faculty_Name: item.Faculty_Id?.Name,
+          Course_Name: item.Student_Id?.Course_id?.Course_Name,
+          Standard_Name: item.Student_Id?.Standard_id?.Name
+        }
+      })
       this.alertsettings = {
         actions: {
-          add: false
+          add: false,
+          edit: false,
+          delete: this.role === "Student" ? false : true
         },
         delete: {
           confirmDelete: true,
@@ -38,31 +53,25 @@ export class VattendaceComponent implements OnInit {
         },
 
         columns: {
-          
-          Student_Id: {
+          Student_Name: {
             title: "Student Name",
-            valuePrepareFunction: (user) => {
-              return user.Name;
-            }
           },
-          Faculty_Id : {
+          Faculty_Name: {
             title: "Faculty Name",
-            valuePrepareFunction: (user) => {
-              return user.Name;
-            }
           },
-          Present : {
+          Course_Name: {
+            title: "Course_Name",
+          },
+          Standard_Name: {
+            title: "Standard_Name",
+          },
+          Present: {
             title: "Present",
           },
           Date: {
             title: 'Date',
-            valuePrepareFunction: (date) => {
-              return date.substr(0,10);
-            }
-          },
-
+          }
         },
-
         attr: {
           class: "table table-responsive"
         },

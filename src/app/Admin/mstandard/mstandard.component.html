@@ -11,19 +11,24 @@
               <h4 class="form-section"></h4>
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
-                  <label for="userinput1">Course_ID
-                    <select formControlName="Course_ID" class="form-control">
-                      <option selected="selected" disabled="" value="">Select Course</option>
-                      <option *ngFor="let item of courses" value="{{item._id}}">{{item.Course_Name}}</option>
-                    </select>
-                  </label>
+                  <label for="Course_ID">Course_ID</label>
+                  <select formControlName="Course_ID" class="form-control">
+                    <option disabled>Select Course</option>
+                    <option *ngFor="let item of courses" value="{{item._id}}">{{item.Course_Name}}</option>
+                  </select>
+                  <label *ngIf="is_submtted && getformvalue.Course_ID.errors?.required" class="text-danger">
+                    Course_ID is
+                    required</label>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
-                  <label for="stdname">Standard</label>
-                  <input type="text" formControlName="Name" id="userinput2" class="form-control border-primary"
+                  <label for="Name">Standard</label>
+                  <input type="text" formControlName="Name" id="Name" class="form-control border-primary"
                     placeholder="Standard Name">
+                  <label *ngIf="is_submtted && getformvalue.Name.errors?.required" class="text-danger">
+                    Standard is
+                    required</label>
                 </div>
               </div>
             </div>

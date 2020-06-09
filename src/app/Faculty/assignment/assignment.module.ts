@@ -9,6 +9,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from 'app/shared/auth/token-interceptor.service';
+// import {} from '../../material/material.module'
+
+import { MaterialModule } from '../../material/material.module';
 
 @NgModule({
   declarations: [AssignmentComponent],
@@ -18,7 +21,8 @@ import { TokenInterceptorService } from 'app/shared/auth/token-interceptor.servi
     ReactiveFormsModule,
     FormsModule,
     Ng2SmartTableModule,
-    NgbModule
+    NgbModule,
+    MaterialModule
   ],
   providers: [
     {

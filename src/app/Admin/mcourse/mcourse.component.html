@@ -11,16 +11,22 @@
               <h4 class="form-section"></h4>
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
-                  <label for="addcourse">Add Course</label>
-                  <input type="text" formControlName="Course_Name" id="userinput1" class="form-control border-primary"
+                  <label for="Course_Name">Add Course</label>
+                  <input type="text" formControlName="Course_Name" id="Course_Name" class="form-control border-primary"
                     placeholder="Course Name">
+                  <label *ngIf=" is_submtted &&
+                                 getformvalue.Course_Name.errors
+                                  ?.required" class="text-danger">Course Name is required</label>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6 mb-2">
-                  <label for="duration">Duration</label>
-                  <input type="text" formControlName="Duration" id="userinput2" class="form-control border-primary"
+                  <label for="Duration">Duration</label>
+                  <input type="text" formControlName="Duration" id="Duration" class="form-control border-primary"
                     placeholder="Duration">
+                  <label *ngIf="is_submtted &&getformvalue.Duration.errors?.required" class="text-danger">
+                  Duration is
+                    required</label>
                 </div>
               </div>
             </div>
