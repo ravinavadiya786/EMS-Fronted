@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-attendance',
@@ -20,6 +21,13 @@ export class AttendanceComponent implements OnInit {
   isopen: boolean = false;
   isshow: boolean = false;
   data: any;
+  showcanavs: boolean = false;
+  courses: any = []
+  division: any = []
+  standards: any = []
+  is_submtted = false
+  isCollapsed = true
+
   constraints = {
     video: {
       facingMode: "environment",
@@ -29,8 +37,16 @@ export class AttendanceComponent implements OnInit {
   };
   constructor(private renderer: Renderer2, private http: HttpClient, private toast: ToastrService) { }
 
+  attecndaceform: FormGroup = new FormGroup({
+    Course_ID: new FormControl('', Validators.required),
+    Std_ID: new FormControl('', Validators.required),
+    Division_ID: new FormControl('', Validators.required),
+  });
 
   ngOnInit() {
+    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => this.courses = data)
+    this.http.get("http://localhost:8050/Admin/Standard").subscribe((data: any) => this.standards = data)
+    this.http.get("http://localhost:8050/Admin/Division").subscribe((data: any) => this.division = data)
   }
 
   startCamera() {
@@ -38,12 +54,22 @@ export class AttendanceComponent implements OnInit {
     if (!!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
       navigator.mediaDevices.getUserMedia(this.constraints).then(this.attachVideo.bind(this)).catch(this.handleError);
     } else {
-      alert('Sorry, camera not available.');
+      this.toast.error('Sorry, camera not available.');
     }
   }
-
+  get getformvalue() {
+    return this.attecndaceform.controls
+  }
   handleError(error) {
-    console.log('Error: ', error);
+    this.toast.error('Error: ', error);
+  }
+
+  postdata() {
+    this.is_submtted = true
+    if (this.attecndaceform.invalid) {
+      return
+    }
+    this.isCollapsed = false
   }
 
   attachVideo(stream) {
@@ -80,6 +106,7 @@ export class AttendanceComponent implements OnInit {
 
   capture() {
     this.isshow = true;
+    this.showcanavs = true;
     this.renderer.setProperty(this.canvas.nativeElement, 'width', this.videoWidth);
     this.renderer.setProperty(this.canvas.nativeElement, 'height', this.videoHeight);
     this.canvas.nativeElement.getContext('2d').drawImage(this.videoElement.nativeElement, 0, 0);
@@ -94,8 +121,8 @@ export class AttendanceComponent implements OnInit {
   postrequest(img) {
     const formData = new FormData();
     formData.append('picture', img);
-    console.log('image', img)
-    // https://college-managment-system.herokuapp.com/Student/face
+    formData.append('data', this.attecndaceform.value);
+
     this.http.post(this.url, formData).subscribe((data: any) => {
       console.log('data', data)
       this.toast.clear()

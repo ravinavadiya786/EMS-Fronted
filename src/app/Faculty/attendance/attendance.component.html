@@ -1,29 +1,96 @@
-<mat-progress-bar *ngIf="isshow" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar *ngIf="isshow" class="mt-3 mb-3" mode="indeterminate"></mat-progress-bar>
+<!-- -->
+<div class="row text-left" [ngbCollapse]="!isCollapsed">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Select Attendance Informations</h4>
+      </div>
+      <div class="card-content">
+        <div class="card-body">
+          <form class="form" [formGroup]="attecndaceform" (ngSubmit)="postdata()">
+            <div class="form-body">
+              <h4 class="form-section"></h4>
+              <div class="row">
+                <div class="form-group col-md-6 mb-2 m-1">
+                  <label class="text-primary text-uppercase" for="userinput1">Select Course</label>
+                  <select formControlName="Course_ID" class="form-control">
+                    <option *ngFor="let item of courses" value="{{ item._id }}">{{ item.Course_Name }}</option>
+                  </select>
+                  <label *ngIf="is_submtted && getformvalue.Course_ID.errors?.required" class="text-danger">
+                    Course is
+                    required</label>
+                </div>
+              </div>
 
-<div class="row">
-  <div class="col-lg-6">
-    <div class="custom-file mx-auto d-block shadow">
-      <input class="custom-file-input" id="inputGroupFile01" (change)="changefile($event)" type="file" /><label
-        class="custom-file-label" for="inputGroupFile01">Choose Photo</label>
+              <div class="row">
+                <div class="form-group col-md-6 mb-2 m-1">
+                  <label class="text-primary text-uppercase" for="userinput2">Select Standard</label>
+                  <select formControlName="Std_ID" class="form-control">
+                    <option *ngFor="let items of standards" value="{{ items._id }}">{{ items.Name }}</option>
+                  </select>
+                  <label *ngIf="is_submtted && getformvalue.Std_ID.errors?.required" class="text-danger">
+                    Standard is
+                    required</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6 mb-2 m-1">
+                  <label class="text-primary text-uppercase" for="Division_ID">Select Division_ID</label>
+                  <select formControlName="Division_ID" class="form-control">
+                    <option *ngFor="let items of division" value="{{ items._id }}">{{ items.Division_Name }}</option>
+                  </select>
+                  <label *ngIf="is_submtted && getformvalue.Division_ID.errors?.required" class="text-danger">
+                    Division_ID is
+                    required</label>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-actions left">
+              <button type="reset" class="btn btn-raised btn-warning mr-1">
+                <i class="ft-x"></i> Cancel
+              </button>
+              <button type="submit"  class="btn btn-raised btn-primary">
+                <i class="fa fa-check-square-o"></i> Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-lg-6">
-    <button class="btn btn-primary float-right shadow-z-3 btn-block btn-raised" (click)="startCamera()">
-      <i class="fa fa-camera pr-2"></i>
-      Attendance With Web Camera
-      <i class="fa fa-camera pl-2"></i>
-    </button>
   </div>
 </div>
 
 
-<button [hidden]="!isopen" class="btn btn-primary float-right btn-block btn-raised" (click)="capture()">
-  Capture Image
-</button>
-<video #video [hidden]="!isopen" class="vid shadow-z-5" autoplay></video>
+<div id="collapseExample" [ngbCollapse]="isCollapsed">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="custom-file mx-auto d-block shadow">
+        <input class="custom-file-input" id="inputGroupFile01" (change)="changefile($event)" type="file" /><label
+          class="custom-file-label" for="inputGroupFile01">Choose Photo</label>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <button class="btn btn-primary float-right shadow-z-3 btn-block btn-raised" (click)="startCamera()">
+        <i class="fa fa-camera pr-2"></i>
+        Attendance With Web Camera
+        <i class="fa fa-camera pl-2"></i>
+      </button>
+    </div>
+  </div>
 
-<canvas #canvas id="canvas" [hidden]="!isopen" class="vid shadow-z-5"></canvas>
+  <button [hidden]="!isopen" class="btn btn-primary mt-2 mp-2 float-right btn-block btn-raised" (click)="capture()">
+    Capture Image
+  </button>
 
-<ul *ngFor="let item of data">
-  <li>{{ item }}</li>
-</ul>
+  <canvas #canvas id="canvas" [hidden]="!showcanavs" class="vid shadow-z-5"></canvas>
+
+  <video #video [hidden]="!isopen" class="vid shadow-z-5" autoplay></video>
+
+
+  <ul *ngFor="let item of data">
+    <li>{{ item }}</li>
+  </ul>
+</div>

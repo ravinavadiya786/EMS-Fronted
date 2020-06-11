@@ -9,6 +9,7 @@ import { TokenInterceptorService } from 'app/shared/auth/token-interceptor.servi
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material/material.module'
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     Ng2SmartTableModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule
   ],
   declarations: [
     AttendanceComponent,
