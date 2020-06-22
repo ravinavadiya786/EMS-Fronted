@@ -104,12 +104,13 @@ export class TestComponent implements OnInit {
                       <i class="float-right ft-award p-2 font-large-1"></i>
                     </div>
                     
-                    <h3 class="text-center mt-3 text-danger">Wrong Answer ${this.Score} </h3>
-                    <h3 class="text-center mt-3 text-success ">Correct Answer ${this.WrongAnsCnt} </h3>
+                    <h3 class="text-center mt-3 text-danger">Wrong Answer ${this.WrongAnsCnt} </h3>
+                    <h3 class="text-center mt-3 text-success ">Correct Answer ${this.Score} </h3>
                   </div>
                 </div>
                 `,
             })
+            return
           } else {
             this.toast.error(data.Error);
           }

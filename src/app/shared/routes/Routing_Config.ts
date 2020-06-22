@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CometchatEmbeddedComponent } from '../../../libs/cometchat-angular-ui-kit/src/lib/cometchat-embedded/cometchat-embedded.component';
 
 export const STUDENT_ROUTES: Routes = [
   {
@@ -194,5 +195,13 @@ export const Comman_ROUTES: Routes = [
   {
     path: 'vattendace',
     loadChildren: () => import('../../Comman/vattendace/vattendace.module').then(m => m.VattendaceModule)
+  },
+  {
+    path: 'vattendace',
+    loadChildren: () => import('../../Comman/vattendace/vattendace.module').then(m => m.VattendaceModule)
+  },
+  {
+    path: 'ems-chat-app',
+    component: CometchatEmbeddedComponent
   },
 ]

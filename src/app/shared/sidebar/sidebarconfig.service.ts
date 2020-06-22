@@ -25,7 +25,7 @@ export class SidebarconfigService {
         { path: '/Admin/mevent', title: 'Manage Event', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Admin/mtimetable', title: 'Manage Time-Table', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Admin/event-gallery', title: 'Manage Event Gallery', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-
+        { path: '/Comman/ems-chat-app', title: 'Chating App', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
       ]
     } else if (role === "Faculty") {
       return [

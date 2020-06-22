@@ -13,12 +13,12 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
-  }, {
+  },
+  {
     path: 'login',
     component: loginComponent,
     pathMatch: 'full'
   },
-
   { path: 'Admin', component: FullLayoutComponent, children: ADMIN_ROUTES, data: { roles: 'Admin' }, canActivate: [AuthGuard] },
   { path: 'Faculty', component: FullLayoutComponent, children: FACULTY_ROUTES, data: { roles: 'Faculty' }, canActivate: [AuthGuard] },
   { path: 'Student', component: FullLayoutComponent, children: STUDENT_ROUTES, data: { roles: 'Student' }, canActivate: [AuthGuard] },

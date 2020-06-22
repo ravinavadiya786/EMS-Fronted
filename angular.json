@@ -29,7 +29,7 @@
               "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/demo.css",
               "src/assets/sass/app.scss",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "src/assets/vendor/pace/pace.min.js"
@@ -96,7 +96,7 @@
               "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/demo.css",
               "src/assets/sass/app.scss",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "assets": [
               "src/assets",
@@ -148,7 +148,8 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "style": "scss"
+      "style": "scss",
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

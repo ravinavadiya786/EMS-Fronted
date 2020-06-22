@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
+import { CometChat } from '@cometchat-pro/chat';
+import { COMETCHAT_CONSTANTS } from '../CONSTS';
 
 @Component({
   selector: 'app-alogin',
@@ -27,6 +29,21 @@ export class loginComponent implements OnInit {
     Password: new FormControl('', [Validators.required]),
   })
 
+  // login = () => {
+
+  //   CometChat.login(this.uid, COMETCHAT_CONSTANTS.API_KEY).then((user) => {
+  //     console.log('sucess',user);
+  //     location.href = '/embeded-app';
+  //   }, error => {
+  //     console.log('CometChatLogin Failed', error);
+  //   });
+  // }
+
+  logout(){
+    CometChat.logout().then(() => {
+      location.href = '/';
+    });
+  }
 
   onSubmit() {
     this.http.post(`${this.ENDURL}/auth/login`, this.loginform.value).subscribe((data: any) => {
@@ -35,6 +52,12 @@ export class loginComponent implements OnInit {
         localStorage.setItem('token', data.token)
         this.toast.clear()
         this.Router.navigate([jwt_decode(localStorage.getItem('token')).role])
+        CometChat.login("superhero2", COMETCHAT_CONSTANTS.API_KEY).then((user) => {
+          console.log('sucess', user);
+          // location.href = '/embeded-app';
+        }, error => {
+          console.log('CometChatLogin Failed', error);
+        });
         this.toast.success('Success Login');
       } else {
         this.toast.clear()

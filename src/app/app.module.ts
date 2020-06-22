@@ -30,6 +30,8 @@ import { MySwitchComponent } from './switch/switch.component';
 import { loginComponent } from './login/login.component';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+// import { CometchatAngularUiKitModule } from 'src/libs/cometchat-angular-ui-kit/src/lib/cometchat-angular-ui-kit.module';
+import { CometchatAngularUiKitModule } from '../libs/cometchat-angular-ui-kit/src/lib/cometchat-angular-ui-kit.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -63,7 +65,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     HttpClientModule,
     ToastrModule.forRoot(),
     NgbModule.forRoot(),
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    CometchatAngularUiKitModule
   ],
   providers: [
     AuthService,

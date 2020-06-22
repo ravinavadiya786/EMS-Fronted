@@ -87,7 +87,7 @@ export class MdivisionComponent implements OnInit {
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
                 // tslint:disable-next-line: no-shadowed-variable
-                that.http.put("https://college-managment-system.herokuapp.com/Admin/Division", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("http://localhost:8050/Admin/Division", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   console.log(data)
                   if (data.Error) {
                     that.toast.error(data.Error);
@@ -117,8 +117,8 @@ export class MdivisionComponent implements OnInit {
     })
   }
   ngOnInit() {
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Course").subscribe((data: any) => this.courses = data)
-    this.http.get("https://college-managment-system.herokuapp.com/Admin/Standard").subscribe((data: any) => this.standards = data)
+    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => this.courses = data)
+    this.http.get("http://localhost:8050/Admin/Standard").subscribe((data: any) => this.standards = data)
     this.fetchstan()
 
   }
@@ -130,7 +130,7 @@ export class MdivisionComponent implements OnInit {
     if (this.divisionform.invalid) {
       return
     }
-    this.http.post("https://college-managment-system.herokuapp.com/Admin/Division", this.divisionform.value).subscribe((data: any) => {
+    this.http.post("http://localhost:8050/Admin/Division", this.divisionform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -167,7 +167,7 @@ export class MdivisionComponent implements OnInit {
       } else {
         console.log(event.data)
 
-        that.http.delete("https://college-managment-system.herokuapp.com/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("http://localhost:8050/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -210,7 +210,7 @@ export class MdivisionComponent implements OnInit {
         )
       } else {
         console.log(event.data)
-        that.http.put("https://college-managment-system.herokuapp.com/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
+        that.http.put("http://localhost:8050/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

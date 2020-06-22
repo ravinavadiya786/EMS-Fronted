@@ -1,0 +1,34 @@
+<div class="cometchat-grouplist-container" (scroll)="onScroll($event)">
+  <div class="cometchat-grouplist-header-container">
+    <p class="cometchat-grouplist-header-text">Groups</p>
+    <p (click)=createGroup() class="cometchat-create-group-icon"></p>
+  </div>
+
+  <!-- <input class="cometchat-groups-search-input" type="text" placeholder="Search" (input)='onSearchChange($event)' /> -->
+  <form>
+    <div style="padding :12px" class="position-relative has-icon-left cometchat-users-search-input">
+      <input (input)='onSearchChange($event)' placeholder="Search Groups" 
+        type="text" class="form-control ng-untouched ng-pristine ng-valid">
+      <div class="form-control-position" style="margin-top: 10px"><i  class="ft-search"></i></div>
+    </div>
+  </form>
+  <ul *ngIf="groups?.length > 0" class="cometchat-grouplist-decoration">
+    <li *ngFor="let group of groups" (click)="onItemClick(group,'group')">
+      <cometchat-group-view group={{JSONParser.stringify(group)}}
+        [selected]="((selectedGroup && selectedGroup.guid==group.guid)?true: false)">
+      </cometchat-group-view>
+      <div class="cometchat-grouplist-seperator"></div>
+    </li>
+  </ul>
+
+  <div *ngIf="groups?.length==0" class="cometchat-grouplist-decorator-message-container">
+    <p class="cometchat-grouplist-decorator-message">
+      {{messageToDisplay}}
+    </p>
+  </div>
+</div>
+
+<div *ngIf="showCreateGroup">
+  <cometchat-create-group-screen (actionPerformed)=handleGroupCreationActions($event) showPopUp={{showCreateGroup}}>
+  </cometchat-create-group-screen>
+</div>

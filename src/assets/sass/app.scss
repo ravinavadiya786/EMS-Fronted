@@ -1,6 +1,9 @@
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
-@import "scss/variables";
+@import '~ngx-ui-switch/ui-switch.component.scss';
+@import "~swiper/css/swiper.min.css";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+
+@import "scss/variables";
 @import "scss/app-variables";
 @import "scss/mixins";
 @import "scss/core/palette";
@@ -9,7 +12,5 @@
 @import "scss/core";
 @import "scss/fonts/weather-icons";
 @import "scss/plugins";
-@import '~ngx-ui-switch/ui-switch.component.scss';
 @import "scss/demo"; // Remove this SCSS from production
-@import "~swiper/css/swiper.min.css";
 
