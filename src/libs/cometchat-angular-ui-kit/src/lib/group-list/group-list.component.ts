@@ -15,7 +15,7 @@ export class GroupListComponent implements OnInit {
   messageToDisplay = STRING_CONSTS.STRING_MESSAGES.LOADING_MESSSAGE;
 
   groupListManager: GroupListManager;
-  groups: CometChat.Group[] = [];
+  groups: any[] = [];
   JSONParser = JSON;
 
   showCreateGroup = false;
