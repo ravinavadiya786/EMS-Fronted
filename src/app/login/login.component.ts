@@ -39,7 +39,7 @@ export class loginComponent implements OnInit {
   //   });
   // }
 
-  logout(){
+  logout() {
     CometChat.logout().then(() => {
       location.href = '/';
     });
@@ -52,7 +52,7 @@ export class loginComponent implements OnInit {
         localStorage.setItem('token', data.token)
         this.toast.clear()
         this.Router.navigate([jwt_decode(localStorage.getItem('token')).role])
-        CometChat.login("superhero2", COMETCHAT_CONSTANTS.API_KEY).then((user) => {
+        CometChat.login(data.id, COMETCHAT_CONSTANTS.API_KEY).then((user) => {
           console.log('sucess', user);
           // location.href = '/embeded-app';
         }, error => {

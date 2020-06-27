@@ -4,11 +4,11 @@
 .cometchat-conversation-item {
   display: flex;
   background: #fff;
-  padding: 8px;
+  // padding: 8px;
+  padding : 0px 10px 0px 15px;
   overflow: hidden;
   max-width: calc(100% - 10px);
   width: calc(100% - 10px);
-  display: flex;
 }
 
 .cometchat-conversation-avatar {

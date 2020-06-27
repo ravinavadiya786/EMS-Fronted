@@ -22,7 +22,7 @@
 
     .message-text {
       float: right;
-      // background: $primary-color;
+      position:relative;;
       background: #009DA0;
       padding: 5px;
       border-radius: 5px;
@@ -31,6 +31,16 @@
       max-width: 60%;
       word-wrap: break-word;
       white-space: pre-line;
+    }
+    .message-text::before{
+      position: absolute;
+      top: 10px;
+      right: -10px;
+      width: 0;
+      height: 0;
+      content: "";
+      border: 5px solid transparent;
+      border-left-color: #009DA0;
     }
     .boradcast-container {
       float: right;
@@ -221,6 +231,7 @@
       max-width: 60%;
       word-wrap: break-word;
       white-space: pre-line;
+      position: relative;
     }
     .boradcast-container {
       float: left;

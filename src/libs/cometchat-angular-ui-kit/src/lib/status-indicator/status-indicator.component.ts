@@ -22,10 +22,15 @@ export class StatusIndicatorComponent implements OnInit {
 
   getMyStyle = () => {
 
+    // return {
+    //   border:
+    //     // this.borderWidth + ' solid ' + this.borderColor + ' ' + this.borderColor,
+    //   width: this.width, height: this.height, background: this.background, 'border-radius': this.cornerRadius
+    // };
     return {
-      border:
-        this.borderWidth + ' solid ' + this.borderColor + ' ' + this.borderColor,
-      width: this.width, height: this.height, background: this.background, 'border-radius': this.cornerRadius
+      border: "1px solid #fff",
+        // this.borderWidth + ' solid ' + this.borderColor + ' ' + this.borderColor,
+      width: "10px", height: "10px", background: this.background, 'border-radius': this.cornerRadius
     };
   }
 }

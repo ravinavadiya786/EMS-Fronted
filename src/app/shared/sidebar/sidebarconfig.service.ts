@@ -15,6 +15,8 @@ export class SidebarconfigService {
     if (role === "Admin") {
       return [
         { path: '/Admin/dashbord', title: 'Dashboard', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+        { path: '/Comman/ems-chat-app', title: 'Chating App', icon: 'icon-speech', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+
         { path: '/Admin/mstudent', title: 'Manage Student', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Admin/mfaculty', title: 'Manage Faculty', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Admin/mcourse', title: 'Manage Course', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
@@ -25,11 +27,12 @@ export class SidebarconfigService {
         { path: '/Admin/mevent', title: 'Manage Event', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Admin/mtimetable', title: 'Manage Time-Table', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Admin/event-gallery', title: 'Manage Event Gallery', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-        { path: '/Comman/ems-chat-app', title: 'Chating App', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
       ]
     } else if (role === "Faculty") {
       return [
         { path: '/Faculty/dashbord', title: 'Dashboard', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+        { path: '/Comman/ems-chat-app', title: 'Chating App', icon: 'icon-speech', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+
         { path: '/Faculty/mstudent', title: 'View Student', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Faculty/attendance', title: 'Take Attendance', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Comman/vattendace', title: 'View Attendance', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
@@ -52,6 +55,8 @@ export class SidebarconfigService {
     } else if (role === "Student") {
       return [
         { path: '/Student/dashbord', title: 'Dashboard', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+        { path: '/Comman/ems-chat-app', title: 'Chating App', icon: 'icon-speech', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+
         { path: '/Student/noticeboard', title: 'View Notice Board', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Student/mevent', title: 'View Event', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
         { path: '/Student/timetable', title: 'View Time-Table', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
