@@ -42,7 +42,7 @@ export class AssignmentComponent implements OnInit {
 
     fetchstan() {
         this.http
-            .get("http://localhost:8050/Student/Assignment/Availble_Assignment")
+            .get("https://education.serverless.social/Student/Assignment/Availble_Assignment")
             .subscribe((data: Array<any>) => {
                 this.Availble_Assignment = data.map(item => {
                     return {
@@ -60,7 +60,7 @@ export class AssignmentComponent implements OnInit {
 
     ngAfterViewInit() {
         this.http
-            .get("http://localhost:8050/Student/Assignment/Submited_Assignment")
+            .get("https://education.serverless.social/Student/Assignment/Submited_Assignment")
             .subscribe((data: Array<any>) => {
                 this.Submited_Assignment = data.map(item => {
                     return {
@@ -91,7 +91,7 @@ export class AssignmentComponent implements OnInit {
         this.formData.append("AssignmentFaculty_ID", this.id)
 
         this.http
-            .post("http://localhost:8050/Student/Assignment", this.formData)
+            .post("https://education.serverless.social/Student/Assignment", this.formData)
             .subscribe((data: any) => {
                 if (data.Success) {
                     this.toast.success(data.Success)

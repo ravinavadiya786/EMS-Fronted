@@ -30,10 +30,10 @@ export class MtimetableComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => this.courses = data)
-    this.http.get("http://localhost:8050/Admin/Standard").subscribe((data: any) => this.standards = data)
-    this.http.get("http://localhost:8050/Admin/Subject").subscribe((data: any) => this.subject = data)
-    this.http.get("http://localhost:8050/Admin/Division").subscribe((data: any) => this.division = data)
+    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => this.courses = data)
+    this.http.get("https://education.serverless.social/Admin/Standard").subscribe((data: any) => this.standards = data)
+    this.http.get("https://education.serverless.social/Admin/Subject").subscribe((data: any) => this.subject = data)
+    this.http.get("https://education.serverless.social/Admin/Division").subscribe((data: any) => this.division = data)
     this.fetchstan()
 
   }
@@ -50,7 +50,7 @@ export class MtimetableComponent implements OnInit {
 
 
   fetchstan() {
-    this.http.get("http://localhost:8050/Admin/TimeTable").subscribe((data: any) => {
+    this.http.get("https://education.serverless.social/Admin/TimeTable").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,
@@ -139,7 +139,7 @@ export class MtimetableComponent implements OnInit {
             renderComponent: MySwitchComponent,
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
-                that.http.put("http://localhost:8050/Admin/TimeTable", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("https://education.serverless.social/Admin/TimeTable", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   if (data.Error) {
                     that.toast.error(data.Error);
                   } else {
@@ -166,7 +166,7 @@ export class MtimetableComponent implements OnInit {
     this.timetableform.value.From_Time = `${this.timetableform.value.From_Time.hour}:${this.timetableform.value.From_Time.minute}`
     this.timetableform.value.To_Time = `${this.timetableform.value.To_Time.hour}:${this.timetableform.value.To_Time.minute}`
 
-    this.http.post("http://localhost:8050/Admin/TimeTable", this.timetableform.value).subscribe((data: any) => {
+    this.http.post("https://education.serverless.social/Admin/TimeTable", this.timetableform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -201,7 +201,7 @@ export class MtimetableComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.delete("http://localhost:8050/Admin/TimeTable?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("https://education.serverless.social/Admin/TimeTable?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -243,7 +243,7 @@ export class MtimetableComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.put("http://localhost:8050/Admin/TimeTable", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
+        that.http.put("https://education.serverless.social/Admin/TimeTable", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

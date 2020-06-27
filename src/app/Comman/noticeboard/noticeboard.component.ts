@@ -13,7 +13,7 @@ export class NoticeboardComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   fetchstan() {
-    this.http.get("http://localhost:8050/Admin/Notice_Borad").subscribe((data: any) => {
+    this.http.get("https://education.serverless.social/Admin/Notice_Borad").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,

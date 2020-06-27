@@ -14,7 +14,7 @@ export class TimetableComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   fetchstan() {
-    this.http.get("http://localhost:8050/Admin/TimeTable").subscribe((data: any) => {
+    this.http.get("https://education.serverless.social/Admin/TimeTable").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,

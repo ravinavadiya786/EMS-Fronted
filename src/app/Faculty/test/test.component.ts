@@ -47,7 +47,7 @@ export class TestComponent implements OnInit {
   }
 
   fetchstan() {
-    this.http.get("http://localhost:8050/Faculty/Test").subscribe((data: any) => {
+    this.http.get("https://education.serverless.social/Faculty/Test").subscribe((data: any) => {
       this.isCollapsed = true
       this.testData = data
       var that = this
@@ -96,7 +96,7 @@ export class TestComponent implements OnInit {
             renderComponent: MySwitchComponent,
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
-                that.http.put("http://localhost:8050/Faculty/Test", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("https://education.serverless.social/Faculty/Test", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   if (data.Error) {
                     that.toast.error(data.Error);
                   } else {
@@ -126,11 +126,11 @@ export class TestComponent implements OnInit {
   }
   
   GetsubjectBuCourse(id) {
-    this.http.get(`http://localhost:8050/Admin/Subject/CourseWise/${id}`).subscribe((data: any) => this.subject = data)
+    this.http.get(`https://education.serverless.social/Admin/Subject/CourseWise/${id}`).subscribe((data: any) => this.subject = data)
   }
   ngAfterViewInit() {
-    // this.http.get("http://localhost:8050/Admin/Subject").subscribe((data: any) => this.subject = data)
-    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => {
+    // this.http.get("https://education.serverless.social/Admin/Subject").subscribe((data: any) => this.subject = data)
+    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => {
       this.course = data
       this.fetchstan();
     })
@@ -143,7 +143,7 @@ export class TestComponent implements OnInit {
       return;
     }
 
-    this.http.post("http://localhost:8050/Faculty/Test", this.productForm.value).subscribe((data: any) => {
+    this.http.post("https://education.serverless.social/Faculty/Test", this.productForm.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -192,7 +192,7 @@ export class TestComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.delete("http://localhost:8050/Faculty/Test?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("https://education.serverless.social/Faculty/Test?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -234,7 +234,7 @@ export class TestComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.put("http://localhost:8050/Faculty/Test", { ...event.newData, Course_ID: event.newData.Course_Name, Subject_ID: event.newData.Sub_Name }).subscribe((data: any) => {
+        that.http.put("https://education.serverless.social/Faculty/Test", { ...event.newData, Course_ID: event.newData.Course_Name, Subject_ID: event.newData.Sub_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.fetchstan()
             that.toast.error(data.Error);

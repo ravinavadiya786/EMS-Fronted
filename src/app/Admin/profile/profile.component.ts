@@ -18,11 +18,11 @@ export class ProfileComponent implements OnInit {
 
     if (this.AuthService.getRole() === "Student") {
       // https://college-managment-system.herokuapp.com/Student/Student
-      this.http.get("http://localhost:8050/Student/Student").subscribe((data: any) => this.data = data)
+      this.http.get("https://education.serverless.social/Student/Student").subscribe((data: any) => this.data = data)
     }
     // 
     else if (this.AuthService.getRole() === "Faculty") {
-      this.http.get("http://localhost:8050/Faculty/Faculty").subscribe((data: any) => this.data = data)
+      this.http.get("https://education.serverless.social/Faculty/Faculty").subscribe((data: any) => this.data = data)
     } else if (this.location.getState()) {
       this.data = this.location.getState()
 

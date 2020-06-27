@@ -33,7 +33,7 @@ export class AssignmentComponent implements OnInit {
 
   fetchstan() {
     this.http
-      .get("http://localhost:8050/Faculty/Assignment/Availble_Assignment")
+      .get("https://education.serverless.social/Faculty/Assignment/Availble_Assignment")
       .subscribe((data: Array<any>) => {
 
         this.assignmentData = data.map(item => {
@@ -77,7 +77,7 @@ export class AssignmentComponent implements OnInit {
               onComponentInitFunction(instance) {
                 instance.save.subscribe((data) => {
                   that.http
-                    .put("http://localhost:8050/Faculty/Assignment", {
+                    .put("https://education.serverless.social/Faculty/Assignment", {
                       _id: data.rowdata._id,
                       Is_Active: data.value,
                     })
@@ -100,7 +100,7 @@ export class AssignmentComponent implements OnInit {
       })
 
     this.http
-      .get("http://localhost:8050/Faculty/Assignment/Submited_Assignment")
+      .get("https://education.serverless.social/Faculty/Assignment/Submited_Assignment")
       .subscribe((data: any) => {
         this.Submited_Assignment = data.map(item => {
           return {
@@ -157,7 +157,7 @@ export class AssignmentComponent implements OnInit {
 
   ngAfterViewInit() {
     this.http
-      .get("http://localhost:8050/Admin/Subject")
+      .get("https://education.serverless.social/Admin/Subject")
       .subscribe((data: any) => (this.subject = data))
   }
 
@@ -178,7 +178,7 @@ export class AssignmentComponent implements OnInit {
     }
 
     this.http
-      .post("http://localhost:8050/Faculty/Assignment", this.formData)
+      .post("https://education.serverless.social/Faculty/Assignment", this.formData)
       .subscribe((data: any) => {
         if (data.Success) {
           this.toast.success(data.Success)

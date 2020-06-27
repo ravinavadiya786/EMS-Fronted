@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AttendanceComponent implements OnInit {
 
-  readonly url = 'http://localhost:8050/Faculty/Attendance';
+  readonly url = 'https://education.serverless.social/Faculty/Attendance';
 
   @ViewChild('video', { static: true }) videoElement: ElementRef;
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
@@ -44,9 +44,9 @@ export class AttendanceComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => this.courses = data)
-    this.http.get("http://localhost:8050/Admin/Standard").subscribe((data: any) => this.standards = data)
-    this.http.get("http://localhost:8050/Admin/Division").subscribe((data: any) => this.division = data)
+    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => this.courses = data)
+    this.http.get("https://education.serverless.social/Admin/Standard").subscribe((data: any) => this.standards = data)
+    this.http.get("https://education.serverless.social/Admin/Division").subscribe((data: any) => this.division = data)
   }
 
   startCamera() {

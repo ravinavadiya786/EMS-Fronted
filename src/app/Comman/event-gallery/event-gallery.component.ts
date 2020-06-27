@@ -14,7 +14,7 @@ export class EventGalleryComponent implements OnInit {
   formData: FormData = new FormData()
 
   fetchdata() {
-    this.http.get("http://localhost:8050/Admin/Event_Gallery").subscribe((data: any) => this.images = data)
+    this.http.get("https://education.serverless.social/Admin/Event_Gallery").subscribe((data: any) => this.images = data)
   }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class EventGalleryComponent implements OnInit {
 
   changefile(event) {
     this.formData.append("uploadedImage", event.target.files[0])
-    this.http.post("http://localhost:8050/Admin/Event_Gallery", this.formData).subscribe((data: any) => this.fetchdata())
+    this.http.post("https://education.serverless.social/Admin/Event_Gallery", this.formData).subscribe((data: any) => this.fetchdata())
 
   }
 }

@@ -28,7 +28,7 @@ export class MdivisionComponent implements OnInit {
 
 
   fetchstan() {
-    this.http.get("http://localhost:8050/Admin/Division").subscribe((data: any) => {
+    this.http.get("https://education.serverless.social/Admin/Division").subscribe((data: any) => {
 
       this.tbldata = data.map((value: any) => {
         return {
@@ -87,7 +87,7 @@ export class MdivisionComponent implements OnInit {
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
                 // tslint:disable-next-line: no-shadowed-variable
-                that.http.put("http://localhost:8050/Admin/Division", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("https://education.serverless.social/Admin/Division", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   console.log(data)
                   if (data.Error) {
                     that.toast.error(data.Error);
@@ -117,8 +117,8 @@ export class MdivisionComponent implements OnInit {
     })
   }
   ngOnInit() {
-    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => this.courses = data)
-    this.http.get("http://localhost:8050/Admin/Standard").subscribe((data: any) => this.standards = data)
+    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => this.courses = data)
+    this.http.get("https://education.serverless.social/Admin/Standard").subscribe((data: any) => this.standards = data)
     this.fetchstan()
 
   }
@@ -130,7 +130,7 @@ export class MdivisionComponent implements OnInit {
     if (this.divisionform.invalid) {
       return
     }
-    this.http.post("http://localhost:8050/Admin/Division", this.divisionform.value).subscribe((data: any) => {
+    this.http.post("https://education.serverless.social/Admin/Division", this.divisionform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -167,7 +167,7 @@ export class MdivisionComponent implements OnInit {
       } else {
         console.log(event.data)
 
-        that.http.delete("http://localhost:8050/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("https://education.serverless.social/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -210,7 +210,7 @@ export class MdivisionComponent implements OnInit {
         )
       } else {
         console.log(event.data)
-        that.http.put("http://localhost:8050/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
+        that.http.put("https://education.serverless.social/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

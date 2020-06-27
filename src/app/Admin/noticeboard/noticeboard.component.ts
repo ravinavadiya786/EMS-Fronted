@@ -28,7 +28,7 @@ export class NoticeBoardComponent implements OnInit {
   isupdate: boolean = false;
   // id: string;
   fetchstan() {
-    this.http.get("http://localhost:8050/Admin/Notice_Borad").subscribe((data: any) => {
+    this.http.get("https://education.serverless.social/Admin/Notice_Borad").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,
@@ -83,7 +83,7 @@ export class NoticeBoardComponent implements OnInit {
       } else {
 
 
-        that.http.delete("http://localhost:8050/Admin/Notice_Borad?_id=" + id).subscribe((data: any) => {
+        that.http.delete("https://education.serverless.social/Admin/Notice_Borad?_id=" + id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -114,7 +114,7 @@ export class NoticeBoardComponent implements OnInit {
   submitForm() {
     if (this.isupdate) {
       this.isupdate = false
-      this.http.put("http://localhost:8050/Admin/Notice_Borad", { ...this.myForm.value, _id: this.id }).subscribe((data: any) => {
+      this.http.put("https://education.serverless.social/Admin/Notice_Borad", { ...this.myForm.value, _id: this.id }).subscribe((data: any) => {
         if (data.Error) {
           this.toast.error(data.Error);
         } else {
@@ -125,7 +125,7 @@ export class NoticeBoardComponent implements OnInit {
         }
       })
     } else {
-      this.http.post("http://localhost:8050/Admin/Notice_Borad", this.myForm.value).subscribe((data: any) => {
+      this.http.post("https://education.serverless.social/Admin/Notice_Borad", this.myForm.value).subscribe((data: any) => {
         if (data.Success) {
           this.toast.success(data.Success);
           this.modalService.dismissAll()

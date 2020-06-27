@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   tbldata: any;
 
   ngAfterViewInit(): void {
-    this.http.get("http://localhost:8050/Admin/Notice_Borad").subscribe((data: any) => {
+    this.http.get("https://education.serverless.social/Admin/Notice_Borad").subscribe((data: any) => {
       this.tbldata = data
       this.tbldata = this.tbldata.sort((a, b) => {
         return new Date(b.Date).getTime() - new Date(a.Date).getTime()
@@ -29,12 +29,12 @@ export class DashboardComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.http.get("http://localhost:8050/Admin/Standard").subscribe((data: any) => this.standard = data.length)
-    this.http.get("http://localhost:8050/Admin/Course").subscribe((data: any) => this.courses = data.length)
-    this.http.get("http://localhost:8050/Admin/Student").subscribe((data: any) => this.students = data.length)
-    this.http.get("http://localhost:8050/Admin/Faculty").subscribe((data: any) => this.faculty = data.length)
-    this.http.get("http://localhost:8050/Admin/Division").subscribe((data: any) => this.divisions = data.length)
-    this.http.get("http://localhost:8050/Admin/Subject").subscribe((data: any) => this.subject = data.length)
+    this.http.get("https://education.serverless.social/Admin/Standard").subscribe((data: any) => this.standard = data.length)
+    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => this.courses = data.length)
+    this.http.get("https://education.serverless.social/Admin/Student").subscribe((data: any) => this.students = data.length)
+    this.http.get("https://education.serverless.social/Admin/Faculty").subscribe((data: any) => this.faculty = data.length)
+    this.http.get("https://education.serverless.social/Admin/Division").subscribe((data: any) => this.divisions = data.length)
+    this.http.get("https://education.serverless.social/Admin/Subject").subscribe((data: any) => this.subject = data.length)
 
   }
 
