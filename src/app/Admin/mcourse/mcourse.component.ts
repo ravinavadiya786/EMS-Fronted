@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef, ViewChild  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MySwitchComponent } from '../../switch/switch.component';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-mcourse',
@@ -17,7 +18,9 @@ export class McourseComponent implements OnInit {
   show: boolean = false;
   is_submtted = false
 
-  constructor(private http: HttpClient, private toast: ToastrService) { }
+  @ViewChild('#mainpanel') namebutton: ElementRef;
+
+  constructor(private http: HttpClient, private toast: ToastrService,private el: ElementRef) { }
 
 
   courseform: FormGroup = new FormGroup({

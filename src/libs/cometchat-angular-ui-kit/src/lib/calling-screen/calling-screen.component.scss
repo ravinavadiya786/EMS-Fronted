@@ -4,6 +4,7 @@
 @include font-family;
 .cometchat-call-screen-container {
   position: fixed;
+  overflow: auto;
   top: 0 ;
   left: 0;
   right: 0;

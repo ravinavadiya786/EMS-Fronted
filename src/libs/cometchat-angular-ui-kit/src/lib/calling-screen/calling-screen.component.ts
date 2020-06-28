@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Input, OnChanges, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { CallScreenManager } from './CometChatManager';
 import { CometChat } from '@cometchat-pro/chat';
@@ -63,6 +64,8 @@ export class CallingScreenComponent implements OnInit, OnChanges {
 
       }
       this.callInProgress = true;
+      document.getElementById("mainpanel").classList.remove("main-panel");
+
       if (this.incomingScreen) {
         this.incomingScreen = true;
       } else {
@@ -131,6 +134,10 @@ export class CallingScreenComponent implements OnInit, OnChanges {
     CometChat.rejectCall(this.inProgressCall.getSessionId(), CometChat.CALL_STATUS.CANCELLED).then(rejectedCall => {
       this.inProgressCall = rejectedCall
       this.callInProgress = false;
+      document.getElementById("mainpanel").classList.add("main-panel");
+
+
+
       this.hideCallScreen();
     }, error => {
       //TODO handle errr on rejected call
@@ -141,6 +148,8 @@ export class CallingScreenComponent implements OnInit, OnChanges {
       case CALL_SCREEN_ACTIONS.INCOMING_CALL_RECEIVED: {
         this.inProgressCall = event.payload.call;
         this.callInProgress = true;
+        document.getElementById("mainpanel").classList.remove("main-panel");
+
         let sessionID = (this.inProgressCall as CometChat.Call).getSessionId();
 
         let tempUser = new CometChat.User({});
@@ -156,6 +165,8 @@ export class CallingScreenComponent implements OnInit, OnChanges {
       case CALL_SCREEN_ACTIONS.OUTGOING_CALL_REJECTED: {
         this.inProgressCall = event.payload.call;
         this.callInProgress = false;
+    document.getElementById("mainpanel").classList.add("main-panel");
+
         this.hideCallScreen();
         break;
       }
@@ -201,6 +212,8 @@ export class CallingScreenComponent implements OnInit, OnChanges {
     this.outgoingScreen = false;
     this.incomingScreen = false;
     this.callInProgress = false;
+    document.getElementById("mainpanel").classList.add("main-panel");
+
     this.inProgressCall = undefined;
     this.cdRef.detectChanges();
     this.actionPerformed.emit({ action: CALL_SCREEN_ACTIONS.HIDE_SCREEN, payload: {} });
