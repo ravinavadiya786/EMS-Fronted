@@ -47,7 +47,7 @@ export class TestComponent implements OnInit {
   }
 
   fetchstan() {
-    this.http.get("https://education.serverless.social/Faculty/Test").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Faculty/Test").subscribe((data: any) => {
       this.isCollapsed = true
       this.testData = data
       var that = this
@@ -96,7 +96,7 @@ export class TestComponent implements OnInit {
             renderComponent: MySwitchComponent,
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
-                that.http.put("https://education.serverless.social/Faculty/Test", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("https://cooing-famous-iguanacolossus.glitch.me/Faculty/Test", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   if (data.Error) {
                     that.toast.error(data.Error);
                   } else {
@@ -126,11 +126,11 @@ export class TestComponent implements OnInit {
   }
   
   GetsubjectBuCourse(id) {
-    this.http.get(`https://education.serverless.social/Admin/Subject/CourseWise/${id}`).subscribe((data: any) => this.subject = data)
+    this.http.get(`https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject/CourseWise/${id}`).subscribe((data: any) => this.subject = data)
   }
   ngAfterViewInit() {
-    // this.http.get("https://education.serverless.social/Admin/Subject").subscribe((data: any) => this.subject = data)
-    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => {
+    // this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject").subscribe((data: any) => this.subject = data)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course").subscribe((data: any) => {
       this.course = data
       this.fetchstan();
     })
@@ -143,7 +143,7 @@ export class TestComponent implements OnInit {
       return;
     }
 
-    this.http.post("https://education.serverless.social/Faculty/Test", this.productForm.value).subscribe((data: any) => {
+    this.http.post("https://cooing-famous-iguanacolossus.glitch.me/Faculty/Test", this.productForm.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -192,7 +192,7 @@ export class TestComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.delete("https://education.serverless.social/Faculty/Test?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("https://cooing-famous-iguanacolossus.glitch.me/Faculty/Test?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -234,7 +234,7 @@ export class TestComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.put("https://education.serverless.social/Faculty/Test", { ...event.newData, Course_ID: event.newData.Course_Name, Subject_ID: event.newData.Sub_Name }).subscribe((data: any) => {
+        that.http.put("https://cooing-famous-iguanacolossus.glitch.me/Faculty/Test", { ...event.newData, Course_ID: event.newData.Course_Name, Subject_ID: event.newData.Sub_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.fetchstan()
             that.toast.error(data.Error);

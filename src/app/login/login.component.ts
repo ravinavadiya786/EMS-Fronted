@@ -15,7 +15,7 @@ import { COMETCHAT_CONSTANTS } from '../CONSTS';
 
 export class loginComponent implements OnInit {
 
-  ENDURL = "https://education.serverless.social"
+  ENDURL = "https://cooing-famous-iguanacolossus.glitch.me"
   //  https://college-managment-system.herokuapp.com"
 
   constructor(public http: HttpClient, private toast: ToastrService, private Router: Router) {

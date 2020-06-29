@@ -71,7 +71,7 @@ export class MeventComponent implements OnInit {
     constructor(private modal: NgbModal, private AuthService: AuthService, private http: HttpClient, private toast: ToastrService) { }
 
     fetchstan() {
-        this.events$ = this.http.get("https://education.serverless.social/Admin/Event").pipe(map((data: any) => {
+        this.events$ = this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Event").pipe(map((data: any) => {
             return data.map((element: any) => {
                 return {
                     start: startOfDay(element.start), end: endOfDay(element.end), title: element.title, color: element.color, _id: element._id, actions: this.AuthService.getRole() === ("Admin" || "Faculty") ? this.actions : null
@@ -120,7 +120,7 @@ export class MeventComponent implements OnInit {
         switch (this.modalData.action) {
             case 'Edit this event':
                 console.log('Edit', this.modalData.event)
-                this.http.put("https://education.serverless.social/Admin/Event", { ... this.modalData.event }).subscribe((data: any) => {
+                this.http.put("https://cooing-famous-iguanacolossus.glitch.me/Admin/Event", { ... this.modalData.event }).subscribe((data: any) => {
                     if (data.Error) {
                         this.toast.error(data.Error);
                     } else {
@@ -131,7 +131,7 @@ export class MeventComponent implements OnInit {
                 break;
             case 'This event is deleted!':
                 console.log('Edit', this.modalData.event)
-                this.http.delete("https://education.serverless.social/Admin/Event?_id=" + this.modalData.event._id).subscribe((data: any) => {
+                this.http.delete("https://cooing-famous-iguanacolossus.glitch.me/Admin/Event?_id=" + this.modalData.event._id).subscribe((data: any) => {
                     if (data.Error) {
                         this.toast.error(data.Error);
                     } else {
@@ -141,7 +141,7 @@ export class MeventComponent implements OnInit {
                 })
                 break;
             case 'Add new event':
-                this.http.post("https://education.serverless.social/Admin/Event", this.modalData.event).subscribe((data: any) => {
+                this.http.post("https://cooing-famous-iguanacolossus.glitch.me/Admin/Event", this.modalData.event).subscribe((data: any) => {
                     if (data.Success) {
                         this.toast.success(data.Success)
                         this.ngOnInit()

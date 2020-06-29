@@ -28,7 +28,7 @@ export class McourseComponent implements OnInit {
 
 
   fetchstan() {
-    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,
@@ -43,7 +43,7 @@ export class McourseComponent implements OnInit {
 
   ngOnInit() {
     this.fetchstan()
-    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course").subscribe((data: any) => {
       this.courses = data
       var that = this
 
@@ -76,7 +76,7 @@ export class McourseComponent implements OnInit {
             renderComponent: MySwitchComponent,
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
-                that.http.put("https://education.serverless.social/Admin/Course", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   console.log(data)
                   if (data.Error) {
                     that.toast.error(data.Error);
@@ -107,7 +107,7 @@ export class McourseComponent implements OnInit {
     if (this.courseform.invalid) {
       return
     }
-    this.http.post("https://education.serverless.social/Admin/Course", this.courseform.value).subscribe((data: any) => {
+    this.http.post("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course", this.courseform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -144,7 +144,7 @@ export class McourseComponent implements OnInit {
         )
       } else {
 
-        that.http.delete("https://education.serverless.social/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -187,7 +187,7 @@ export class McourseComponent implements OnInit {
         )
       } else {
 
-        that.http.put("https://education.serverless.social/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
+        that.http.put("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

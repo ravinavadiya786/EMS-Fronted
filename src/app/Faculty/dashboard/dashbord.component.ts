@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   tbldata: any;
 
   ngAfterViewInit(): void {
-    this.http.get("https://education.serverless.social/Admin/Notice_Borad").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Notice_Borad").subscribe((data: any) => {
       this.tbldata = data
       this.tbldata = this.tbldata.sort((a, b) => {
         return new Date(b.Date).getTime() - new Date(a.Date).getTime()
@@ -28,13 +28,13 @@ export class DashboardComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.http.get("https://education.serverless.social/Admin/Event_Gallery").subscribe((data: any) => this.images = data)
-    this.http.get("https://education.serverless.social/Admin/Standard").subscribe((data: any) => this.standard = data.length)
-    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => this.courses = data.length)
-    this.http.get("https://education.serverless.social/Admin/Student").subscribe((data: any) => this.students = data.length)
-    this.http.get("https://education.serverless.social/Admin/Faculty").subscribe((data: any) => this.faculty = data.length)
-    this.http.get("https://education.serverless.social/Admin/Division").subscribe((data: any) => this.divisions = data.length)
-    this.http.get("https://education.serverless.social/Admin/Subject").subscribe((data: any) => this.subject = data.length)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Event_Gallery").subscribe((data: any) => this.images = data)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Standard").subscribe((data: any) => this.standard = data.length)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course").subscribe((data: any) => this.courses = data.length)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Student").subscribe((data: any) => this.students = data.length)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Faculty").subscribe((data: any) => this.faculty = data.length)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Division").subscribe((data: any) => this.divisions = data.length)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject").subscribe((data: any) => this.subject = data.length)
 
   }
 

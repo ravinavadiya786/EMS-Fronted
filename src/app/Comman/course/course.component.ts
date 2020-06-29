@@ -13,7 +13,7 @@ export class CourseComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   fetchstan() {
-    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course").subscribe((data: any) => {
       this.tbldata = data
 
       this.alertsettings = {

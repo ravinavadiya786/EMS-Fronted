@@ -20,7 +20,7 @@ export class MfacultyComponent implements OnInit {
 
 
   fetchstan() {
-    this.http.get("https://education.serverless.social/Admin/Faculty").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Faculty").subscribe((data: any) => {
       this.tbldata = data
       var that = this
 
@@ -48,7 +48,7 @@ export class MfacultyComponent implements OnInit {
             renderComponent: MySwitchComponent,
             onComponentInitFunction(instance) {
               instance.save.subscribe((data: any) => {
-                that.http.put("https://education.serverless.social/Admin/Faculty", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("https://cooing-famous-iguanacolossus.glitch.me/Admin/Faculty", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   console.log(data)
                   if (data.Error) {
                     that.toast.error(data.Error);
@@ -103,7 +103,7 @@ export class MfacultyComponent implements OnInit {
       } else {
         console.log(event.data)
 
-        that.http.delete("https://education.serverless.social/Admin/Faculty?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("https://cooing-famous-iguanacolossus.glitch.me/Admin/Faculty?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

@@ -12,7 +12,7 @@ import dateformat from 'dateformat'
 })
 export class VattendaceComponent implements OnInit {
 
-  url = 'https://education.serverless.social/Faculty/Attendance';
+  url = 'https://cooing-famous-iguanacolossus.glitch.me/Faculty/Attendance';
   courses: any;
   tbldata: any;
   standards: any;
@@ -111,7 +111,7 @@ export class VattendaceComponent implements OnInit {
       } else {
         console.log(event.data)
 
-        that.http.delete(`https://education.serverless.social/Faculty/Attendance?_id=` + event.data._id).subscribe((data: any) => {
+        that.http.delete(`https://cooing-famous-iguanacolossus.glitch.me/Faculty/Attendance?_id=` + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -154,7 +154,7 @@ export class VattendaceComponent implements OnInit {
         )
       } else {
         console.log(event.data)
-        that.http.put(`https://education.serverless.social/Faculty/Attendance`, { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
+        that.http.put(`https://cooing-famous-iguanacolossus.glitch.me/Faculty/Attendance`, { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

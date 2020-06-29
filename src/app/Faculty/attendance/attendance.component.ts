@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AttendanceComponent implements OnInit {
 
-  readonly url = 'https://education.serverless.social/Faculty/Attendance';
+  readonly url = 'https://cooing-famous-iguanacolossus.glitch.me/Faculty/Attendance';
 
   @ViewChild('video', { static: true }) videoElement: ElementRef;
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
@@ -44,9 +44,9 @@ export class AttendanceComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => this.courses = data)
-    this.http.get("https://education.serverless.social/Admin/Standard").subscribe((data: any) => this.standards = data)
-    this.http.get("https://education.serverless.social/Admin/Division").subscribe((data: any) => this.division = data)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course").subscribe((data: any) => this.courses = data)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Standard").subscribe((data: any) => this.standards = data)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Division").subscribe((data: any) => this.division = data)
   }
 
   startCamera() {

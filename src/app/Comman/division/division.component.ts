@@ -14,7 +14,7 @@ export class DivisionComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   fetchstan() {
-    this.http.get("https://education.serverless.social/Admin/Division").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Division").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,

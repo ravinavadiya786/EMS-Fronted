@@ -28,7 +28,7 @@ export class TestComponent implements OnInit {
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
   fetchData() {
-    this.http.get("https://education.serverless.social/Student/Test").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Student/Test").subscribe((data: any) => {
       this.AlllTestArr = data.Test_Questions
       this.Test_Names = data.Test_Names
       this.Test_Results = data.Test_Results.map(item => {
@@ -88,9 +88,9 @@ export class TestComponent implements OnInit {
     this.timer = 0;
     if (this.Score === 0) this.WrongAnsCnt = this.AlllTestArr.length
 
-    this.http.post("https://education.serverless.social/Student/Test", { Score: this.Score, Test_Master_ID: this.Test_Master_ID, WrongAnsCnt: this.WrongAnsCnt }).subscribe((data: any) => {
+    this.http.post("https://cooing-famous-iguanacolossus.glitch.me/Student/Test", { Score: this.Score, Test_Master_ID: this.Test_Master_ID, WrongAnsCnt: this.WrongAnsCnt }).subscribe((data: any) => {
       if (data.Success) {
-        this.http.put("https://education.serverless.social/Faculty/Test", { _id: this.Test_Master_ID, Is_Finished: true }).subscribe((data: any) => {
+        this.http.put("https://cooing-famous-iguanacolossus.glitch.me/Faculty/Test", { _id: this.Test_Master_ID, Is_Finished: true }).subscribe((data: any) => {
           this.fetchData()
           if (data.Success) {
             swal.fire({

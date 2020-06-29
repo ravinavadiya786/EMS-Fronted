@@ -32,7 +32,7 @@ export class MsubjectComponent implements OnInit {
 
 
   fetchstan() {
-    this.http.get("https://education.serverless.social/Admin/Subject").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject").subscribe((data: any) => {
       this.tbldata = data.map((value: any) => {
         return {
           '_id': value._id,
@@ -87,7 +87,7 @@ export class MsubjectComponent implements OnInit {
             renderComponent: MySwitchComponent,
             onComponentInitFunction(instance) {
               instance.save.subscribe(data => {
-                that.http.put("https://education.serverless.social/Admin/Subject", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
+                that.http.put("https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject", { _id: data.rowdata._id, Is_Active: data.value }).subscribe((data: any) => {
                   if (data.Error) {
                     that.toast.error(data.Error);
                   } else {
@@ -112,8 +112,8 @@ export class MsubjectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get("https://education.serverless.social/Admin/Course").subscribe((data: any) => this.courses = data)
-    this.http.get("https://education.serverless.social/Admin/Standard").subscribe((data: any) => this.standards = data)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Course").subscribe((data: any) => this.courses = data)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Standard").subscribe((data: any) => this.standards = data)
     this.fetchstan()
   }
 
@@ -125,7 +125,7 @@ export class MsubjectComponent implements OnInit {
     if (this.subjectform.invalid) {
         return
     }
-    this.http.post("https://education.serverless.social/Admin/Subject", this.subjectform.value).subscribe((data: any) => {
+    this.http.post("https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject", this.subjectform.value).subscribe((data: any) => {
       if (data.Success) {
         this.toast.success(data.Success)
         this.fetchstan()
@@ -160,7 +160,7 @@ export class MsubjectComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.delete("https://education.serverless.social/Admin/Subject?_id=" + event.data._id).subscribe((data: any) => {
+        that.http.delete("https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject?_id=" + event.data._id).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {
@@ -202,7 +202,7 @@ export class MsubjectComponent implements OnInit {
           'error'
         )
       } else {
-        that.http.put("https://education.serverless.social/Admin/Subject", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
+        that.http.put("https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject", { ...event.newData, Course_ID: event.newData.Course_Name }).subscribe((data: any) => {
           if (data.Error) {
             that.toast.error(data.Error);
           } else {

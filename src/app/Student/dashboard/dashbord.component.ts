@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   noticeboardData: any;
 
   ngAfterViewInit(): void {
-    this.http.get("https://education.serverless.social/Admin/Notice_Borad").subscribe((data: any) => {
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Notice_Borad").subscribe((data: any) => {
       this.noticeboardData = data
       this.noticeboardData = this.noticeboardData.sort((a, b) => {
         return new Date(b.Date).getTime() - new Date(a.Date).getTime()
@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.http.get("https://education.serverless.social/Admin/Division").subscribe((data: any) => this.divisions = data.length)
-    this.http.get("https://education.serverless.social/Admin/Subject").subscribe((data: any) => this.subject = data.length)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Division").subscribe((data: any) => this.divisions = data.length)
+    this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Admin/Subject").subscribe((data: any) => this.subject = data.length)
 
   }
 
