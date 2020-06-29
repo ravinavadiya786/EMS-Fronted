@@ -1,5 +1,4 @@
 <div class="row text-left">
-  <button (click)="hidescreen()" >hide</button>
   <div *ngIf="show" class="col-sm-12">
     <div class="card">
       <div class="card-header">
@@ -15,7 +14,7 @@
                   <label for="Course_Name">Add Course</label>
                   <input type="text" formControlName="Course_Name" id="Course_Name" class="form-control border-primary"
                     placeholder="Course Name">
-                  <label *ngIf=" is_submtted &&
+                    <label *ngIf=" is_submtted &&
                                  getformvalue.Course_Name.errors
                                   ?.required" class="text-danger">Course Name is required</label>
                 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit,ElementRef, ViewChild  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MySwitchComponent } from '../../switch/switch.component';
@@ -16,11 +16,9 @@ export class McourseComponent implements OnInit {
   tbldata: any;
   alertsettings;
   show: boolean = false;
-  is_submtted = false
+  is_submtted = false;
 
-  @ViewChild('#mainpanel') namebutton: ElementRef;
-
-  constructor(private http: HttpClient, private toast: ToastrService,private el: ElementRef) { }
+  constructor(private http: HttpClient, private toast: ToastrService) { }
 
 
   courseform: FormGroup = new FormGroup({
