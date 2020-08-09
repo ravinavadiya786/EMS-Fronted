@@ -28,7 +28,7 @@ export class MstudentComponent implements OnInit {
                 return {
                     ...item,
                     Created_On: dateformat(item.Created_On, "fullDate"),
-                    Img_Path: `<img  src=${item.Img_Path} alt="avatar" height="45" width="50" class="rounded-circle" >`
+                    Av_Img_Path: `<img  src=${item.Img_Path} alt="avatar" height="45" width="50" class="rounded-circle" >`
                 }
             })
             var that = this
@@ -44,7 +44,7 @@ export class MstudentComponent implements OnInit {
                     deleteButtonContent: '<i class="ft-x danger font-medium-1 mr-2"></i>'
                 },
                 columns: {
-                    Img_Path: {
+                    Av_Img_Path: {
                         type: 'html',
                         title: 'Image',
                         filter: false,

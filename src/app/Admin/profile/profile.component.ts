@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
     else if (this.AuthService.getRole() === "Faculty") {
       this.http.get("https://cooing-famous-iguanacolossus.glitch.me/Faculty/Faculty").subscribe((data: any) => this.data = data)
     } else if (this.location.getState()) {
+      console.log(this.location.getState())
       this.data = this.location.getState()
 
     } else {
